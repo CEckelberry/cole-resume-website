@@ -62,7 +62,7 @@ export const PROJECTS: readonly Project[] = [
     italicWord: 'Bake-off',
     description:
       'Six runtimes (Go, Rust, Bun, Node, Python, PHP) implement the same checkout endpoint. Switch which one serves your request via header. Watch the latency move in real time.',
-    tags: ['Go', 'Rust', 'GKE', 'Postgres', 'Cloud SQL'],
+    tags: ['Go', 'Rust', 'GKE', 'Postgres'],
     accent: 'teal',
     status: 'planned',
     caseStudyHref: '/work/bakeoff',

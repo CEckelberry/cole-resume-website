@@ -13,7 +13,7 @@
   ];
 
   const contactLinks = [
-    { label: 'cole.eckelberry@gmail.com', href: 'mailto:cole.eckelberry@gmail.com' },
+    { label: 'say hi →', href: '/#contact' },
     { label: 'cv.pdf', href: '/cv' },
     { label: 'book a call', href: 'https://cal.com/coleeckelberry' }
   ];
@@ -21,13 +21,13 @@
   const buildDate = BUILD_TIME.slice(0, 10);
 </script>
 
-<footer id="contact" class="footer">
+<footer class="footer">
   <div class="grid">
     <section class="brand">
       <p class="name">cole eckelberry</p>
       <p class="blurb">
-        platform engineer in san jose, ca. ten years of cloud, six months of go, two years of
-        sveltekit.
+        platform engineer in san jose, ca. ten years of cloud + python, two years of sveltekit, six
+        months of go.
       </p>
       <p class="uptime">
         <span class="dot" aria-hidden="true"></span>
@@ -87,10 +87,21 @@
 
 <style>
   .footer {
+    /* Mirror the .page container in +layout.svelte so the brand block isn't
+       jammed against the viewport edge. */
+    max-width: var(--container-page);
+    margin: var(--space-8) auto 0;
+    padding: var(--space-8) 24px var(--space-6);
     border-top: 0.5px solid var(--border-subtle);
-    padding: var(--space-8) 0 var(--space-6);
-    margin-top: var(--space-8);
     color: var(--text-secondary);
+    position: relative;
+    z-index: 2;
+  }
+
+  @media (min-width: 768px) {
+    .footer {
+      padding: var(--space-8) 48px var(--space-6);
+    }
   }
 
   .grid {

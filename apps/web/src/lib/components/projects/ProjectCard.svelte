@@ -85,6 +85,7 @@
     text-decoration: none;
     color: var(--text-primary);
     min-height: 380px;
+    height: 100%;
     transition:
       transform var(--dur-default) var(--ease-out),
       border-color var(--dur-default) var(--ease-out),

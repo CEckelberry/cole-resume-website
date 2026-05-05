@@ -47,18 +47,26 @@
     onchange={(next) => (active = next)}
   />
 
-  <div class="grid">
-    {#each filtered as project (project.slug)}
-      <div class="cell" in:fade={{ duration: 200 }} out:fade={{ duration: 120 }}>
-        <ProjectCard {project}>
-          {#snippet preview()}
-            {@const PreviewComponent = previewBySlug[project.slug]}
-            <PreviewComponent />
-          {/snippet}
-        </ProjectCard>
-      </div>
-    {/each}
-  </div>
+  <!--
+    Keyed by the active filter so the whole grid swaps atomically:
+    out fade runs first, the grid is replaced, then the new grid fades in.
+    Without this, per-card transitions overlap and the user briefly sees
+    the previous set sitting alongside the new set.
+  -->
+  {#key active}
+    <div class="grid" in:fade={{ duration: 180, delay: 110 }} out:fade={{ duration: 100 }}>
+      {#each filtered as project (project.slug)}
+        <div class="cell">
+          <ProjectCard {project}>
+            {#snippet preview()}
+              {@const PreviewComponent = previewBySlug[project.slug]}
+              <PreviewComponent />
+            {/snippet}
+          </ProjectCard>
+        </div>
+      {/each}
+    </div>
+  {/key}
 </section>
 
 <style>
@@ -107,7 +115,21 @@
   .grid {
     display: grid;
     grid-template-columns: 1fr;
+    /* Force equal-height cells so all four cards match the tallest one in
+       the row. Each card already uses flex column with the footer pinned
+       via margin-top: auto, so the extra space goes between description
+       and footer rather than misaligning the chrome. */
+    grid-auto-rows: 1fr;
     gap: var(--space-5);
+  }
+
+  .cell {
+    display: flex;
+  }
+
+  .cell :global(> a),
+  .cell :global(> .card) {
+    width: 100%;
   }
 
   @media (min-width: 768px) {

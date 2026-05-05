@@ -60,3 +60,7 @@ coverage/
 
 # Claude Code project-local settings
 .claude/settings.local.json
+
+# Planning + design docs — kept locally for reference, not part of the
+# published repo. ARCHITECTURE.md, DESIGN.md, TASKS.md, PROJECTS.md, etc.
+.docs/

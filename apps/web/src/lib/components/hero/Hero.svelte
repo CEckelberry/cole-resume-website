@@ -35,8 +35,8 @@
     </p>
 
     <p class="bio">
-      Ten years of building cloud platforms by day. Four side projects below — all open source, all
-      live.
+      Ten years building cloud platforms — Python, JavaScript, TypeScript, plus the operations
+      stack. Four side projects below, all open source, all live.
     </p>
 
     <div class="ctas">

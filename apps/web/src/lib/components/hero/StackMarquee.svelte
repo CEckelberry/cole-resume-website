@@ -79,10 +79,6 @@
     will-change: transform;
   }
 
-  .marquee:hover .track {
-    animation-duration: 60s;
-  }
-
   @keyframes scroll {
     from {
       transform: translateX(0);

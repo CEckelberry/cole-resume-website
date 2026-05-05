@@ -14,6 +14,7 @@ import (
 	"github.com/CEckelberry/cole-resume-website/apps/api/internal/config"
 	apphttp "github.com/CEckelberry/cole-resume-website/apps/api/internal/http"
 	"github.com/CEckelberry/cole-resume-website/apps/api/internal/logging"
+	"github.com/CEckelberry/cole-resume-website/apps/api/internal/store"
 )
 
 const (
@@ -42,9 +43,34 @@ func main() {
 		slog.String("build_sha", cfg.BuildSHA),
 	)
 
+	// Database is optional in local dev; the contact endpoint becomes 503
+	// without it but health and future read-only endpoints keep working.
+	var pool *store.Pool
+	if cfg.DatabaseURL != "" {
+		var err error
+		dbCtx, cancel := context.WithTimeout(context.Background(), 15*time.Second)
+		pool, err = store.Connect(dbCtx, cfg.DatabaseURL)
+		cancel()
+		if err != nil {
+			log.Error("database connect failed; contact endpoint disabled",
+				slog.Any("error", err))
+		} else {
+			log.Info("database connected; migrations applied")
+			defer pool.Close()
+		}
+	} else {
+		log.Warn("DATABASE_URL not set; contact endpoint will return 503")
+	}
+
+	// Pool may be nil (no DATABASE_URL or connect failed); router handles that.
+	var contactStore *store.Pool
+	if pool != nil {
+		contactStore = pool
+	}
+
 	srv := &http.Server{
 		Addr:              ":" + cfg.Port,
-		Handler:           apphttp.NewRouter(cfg, log),
+		Handler:           apphttp.NewRouter(cfg, log, contactStore),
 		ReadHeaderTimeout: readHeaderTimeout,
 		WriteTimeout:      writeTimeout,
 		IdleTimeout:       idleTimeout,

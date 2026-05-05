@@ -15,15 +15,17 @@
   </p>
 
   <p>
-    Over a decade I worked my way through cloud and DevOps roles at NIAID, RoundTower, MediaMonks,
-    Hex, and Pinterest, picking up Python and JavaScript along the way. Today I'm a Senior DevOps /
+    Python has been my main language for about eight years; JavaScript and TypeScript came right
+    alongside it, with React in professional settings. Over a decade I worked through cloud and
+    DevOps roles at NIAID, RoundTower, MediaMonks, Hex, and Pinterest. Today I'm a Senior DevOps /
     Platform Engineer based in the Bay Area.
   </p>
 
   <p>
-    I came to frontend the long way. SvelteKit clicked about two years ago. I started learning Go
-    six months ago and have been using it ever since. The four projects above are how I learn — by
-    building things I'd actually want to use.
+    Frontend frameworks came later. SvelteKit clicked about two years ago — this site is built on
+    it. Go I picked up six months ago, mostly to have a sharper tool for the small services in the
+    projects above. The four projects there are how I learn — by building things I'd actually want
+    to use.
   </p>
 
   <p class="closer">

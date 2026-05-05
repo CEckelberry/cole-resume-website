@@ -9,6 +9,9 @@ services:
     environment:
       NODE_ENV: production
       PORT: "3000"
+      # SvelteKit /api/contact +server.ts reads API_URL to know where the
+      # Go service lives. Inside the compose network it's the api hostname.
+      API_URL: http://api:8080
     depends_on:
       api:
         condition: service_started
