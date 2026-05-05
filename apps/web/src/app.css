@@ -263,3 +263,24 @@ h3 em {
     scroll-behavior: auto !important;
   }
 }
+
+/* View transitions — 240 ms cross-fade between routes in browsers that
+   support the View Transitions API. Browsers without support skip these
+   keyframes entirely (the rule is a no-op). */
+::view-transition-old(root) {
+  animation: vt-fade-out var(--dur-default) var(--ease-out) forwards;
+}
+::view-transition-new(root) {
+  animation: vt-fade-in var(--dur-default) var(--ease-out) forwards;
+}
+
+@keyframes vt-fade-out {
+  to {
+    opacity: 0;
+  }
+}
+@keyframes vt-fade-in {
+  from {
+    opacity: 0;
+  }
+}

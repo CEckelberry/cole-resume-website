@@ -1,11 +1,33 @@
 <script lang="ts">
   import '../app.css';
+  import { onNavigate } from '$app/navigation';
   import Nav from '$lib/components/shell/Nav.svelte';
   import Footer from '$lib/components/shell/Footer.svelte';
   import MeshBackground from '$lib/components/effects/MeshBackground.svelte';
   import PolygonField from '$lib/components/effects/PolygonField.svelte';
 
   let { children } = $props();
+
+  // View transitions: 240ms cross-fade in browsers that support it. Browsers
+  // without support fall through to the regular SvelteKit navigation. Honor
+  // prefers-reduced-motion by skipping the transition entirely.
+  onNavigate((navigation) => {
+    if (typeof document === 'undefined') return;
+    const startViewTransition = (
+      document as Document & {
+        startViewTransition?: (cb: () => Promise<void>) => { finished: Promise<void> };
+      }
+    ).startViewTransition;
+    if (!startViewTransition) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    return new Promise<void>((resolve) => {
+      startViewTransition(async () => {
+        resolve();
+        await navigation.complete;
+      });
+    });
+  });
 </script>
 
 <svelte:head>

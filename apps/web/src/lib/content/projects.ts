@@ -48,7 +48,7 @@ export const PROJECTS: readonly Project[] = [
       'A browser-based bash tutor with a foul-mouthed wasteland teacher. Type real shell commands, get real feedback, get yelled at when you forget the dash before -rf.',
     tags: ['SvelteKit', 'xterm.js', 'Go WASM', 'Tailwind'],
     accent: 'pink',
-    status: 'building',
+    status: 'planned',
     caseStudyHref: '/work/linux',
     liveDemoUrl: 'https://linux.cole-eckelberry.com',
     githubUrl: 'https://github.com/CEckelberry/linux-lessons-from-hell'
@@ -64,7 +64,7 @@ export const PROJECTS: readonly Project[] = [
       'Six runtimes (Go, Rust, Bun, Node, Python, PHP) implement the same checkout endpoint. Switch which one serves your request via header. Watch the latency move in real time.',
     tags: ['Go', 'Rust', 'GKE', 'Postgres', 'Cloud SQL'],
     accent: 'teal',
-    status: 'building',
+    status: 'planned',
     caseStudyHref: '/work/bakeoff',
     liveDemoUrl: 'https://bakeoff.cole-eckelberry.com',
     githubUrl: 'https://github.com/CEckelberry/backend-bakeoff'

@@ -7,3 +7,8 @@ bun.lockb
 
 # Miscellaneous
 /static/
+
+# mdsvex case-study markdown — prettier mangles multi-line JSX-style component
+# attributes by reformatting them in ways markdown then re-interprets as
+# blockquotes. Skip the directory entirely; the .md files are hand-formatted.
+/src/lib/content/case-studies/
