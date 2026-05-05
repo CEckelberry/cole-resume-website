@@ -1,0 +1,25 @@
+{
+  "name": "cole-resume-website",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Cole Eckelberry's portfolio site — SvelteKit + Go monorepo",
+  "license": "MIT",
+  "author": "Cole Eckelberry <cole.eckelberry@gmail.com>",
+  "type": "module",
+  "engines": {
+    "node": ">=20",
+    "pnpm": ">=9"
+  },
+  "packageManager": "pnpm@11.0.5",
+  "scripts": {
+    "dev": "pnpm --filter web dev",
+    "build": "pnpm -r build",
+    "lint": "pnpm -r lint",
+    "test": "pnpm -r test",
+    "check": "pnpm -r check",
+    "format": "pnpm -r format",
+    "api:dev": "cd apps/api && go run ./cmd/server",
+    "api:test": "cd apps/api && go test ./...",
+    "api:vet": "cd apps/api && go vet ./..."
+  }
+}

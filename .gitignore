@@ -1,0 +1,62 @@
+# dependencies
+node_modules/
+.pnpm-store/
+
+# build outputs
+.svelte-kit/
+build/
+dist/
+out/
+*.tsbuildinfo
+
+# Go
+apps/api/server
+apps/api/*.test
+apps/api/coverage.out
+apps/api/coverage.html
+vendor/
+
+# Terraform
+*.tfstate
+*.tfstate.*
+.terraform/
+.terraform.lock.hcl
+crash.log
+crash.*.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+.terraformrc
+terraform.rc
+
+# env / secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# logs / runtime
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+.pnpm-debug.log
+
+# test artifacts
+playwright-report/
+test-results/
+coverage/
+
+# Claude Code project-local settings
+.claude/settings.local.json
