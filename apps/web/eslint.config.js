@@ -37,8 +37,13 @@ export default defineConfig(
     }
   },
   {
-    // Override or add rule settings here, such as:
-    // 'svelte/button-has-type': 'error'
-    rules: {}
+    rules: {
+      // The site relies on hash-anchor navigation within the home page
+      // (`/#work`, `/#about`, `/#contact`) and on placeholder routes that
+      // don't exist yet at v1 (`/journal`). resolve() requires statically
+      // known routes; using it here would just push us into //
+      // eslint-disable comments at every call site. Disable globally.
+      'svelte/no-navigation-without-resolve': 'off'
+    }
   }
 );

@@ -1,0 +1,60 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  web:
+    name: web — lint, check, test
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: apps/web
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 11
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+          cache-dependency-path: pnpm-lock.yaml
+
+      - name: install
+        working-directory: .
+        run: pnpm install --frozen-lockfile
+
+      - run: pnpm lint
+      - run: pnpm check
+      - run: pnpm test
+
+  api:
+    name: api — vet, test
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: apps/api
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: apps/api/go.mod
+          cache-dependency-path: apps/api/go.sum
+
+      - run: go vet ./...
+      - run: go test -race ./...
+      - run: go build ./...
+
+  # NOTE: a deploy job (build + push images, deploy to Cloud Run) will be
+  # added once the GCP project is provisioned. See .github/workflows/README.md
+  # for the secret bindings expected by that future job.
