@@ -3,7 +3,7 @@
   Spec from DESIGN.md → Components → Nav.
 
   Anatomy:
-    [pulsing teal dot] deployed Nh ago · main@SHA  |  work · about · writing · contact
+    [pulsing teal dot] deployed Nh ago · main@SHA  |  work · about · contact
 -->
 <script lang="ts">
   import { BUILD_SHA, BUILD_TIME, timeAgo } from '$lib/utils/buildInfo';
@@ -25,7 +25,6 @@
   const links: LinkDef[] = [
     { href: '/#work', label: 'work' },
     { href: '/#about', label: 'about' },
-    { href: '/journal', label: 'writing' },
     { href: '/#contact', label: 'contact' }
   ];
 </script>

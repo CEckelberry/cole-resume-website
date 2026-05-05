@@ -28,10 +28,7 @@ const config = {
         const allowedMissing = new Set(['/cv']);
         if (allowedMissing.has(path)) return;
         throw new Error(`prerender error at ${path} (linked from ${referrer}): ${message}`);
-      },
-      // /journal/[slug] is prerender=true but has no posts at v1, so its
-      // entries() returns []. SvelteKit 2.59 requires explicit handling.
-      handleUnseenRoutes: 'ignore'
+      }
     }
   }
 };

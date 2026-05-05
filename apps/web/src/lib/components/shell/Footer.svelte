@@ -8,8 +8,7 @@
 
   const elsewhereLinks = [
     { label: 'github', href: 'https://github.com/CEckelberry' },
-    { label: 'linkedin', href: 'https://www.linkedin.com/in/cole-eckelberry/' },
-    { label: 'writing', href: '/journal' }
+    { label: 'linkedin', href: 'https://www.linkedin.com/in/cole-eckelberry/' }
   ];
 
   const contactLinks = [
