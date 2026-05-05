@@ -8,6 +8,7 @@
 <script lang="ts">
   import { BUILD_SHA, BUILD_TIME, timeAgo } from '$lib/utils/buildInfo';
   import { onMount } from 'svelte';
+  import ModeToggle from './ModeToggle.svelte';
 
   // The "deployed N ago" string is computed on the client so it stays fresh
   // without invalidating the prerendered HTML. SSR shows a static fallback
@@ -48,6 +49,8 @@
         </li>
       {/each}
     </ul>
+
+    <ModeToggle />
   </nav>
 </header>
 
