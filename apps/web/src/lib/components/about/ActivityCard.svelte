@@ -1,94 +1,104 @@
 <!--
-  ActivityCard — recent activity card. Placeholder version with static rows
-  for v1; structured so the rows can be swapped for live `/api/activity`
-  output in Phase 4.
+  ActivityCard — recent GitHub activity. Calls /api/activity on mount,
+  falls back to a sensible empty state if the API is unreachable or
+  returns degraded.
 -->
 <script lang="ts">
-  type ActivityKind = 'deploy' | 'commit' | 'release' | 'reading' | 'outdoors';
+  import { onMount } from 'svelte';
 
-  type Item = {
+  type ActivityKind = 'commit' | 'release' | 'create' | 'pr';
+
+  interface ActivityItem {
     kind: ActivityKind;
+    repo: string;
     title: string;
-    detail?: string;
-    when: string;
-  };
+    url: string;
+    age_text: string;
+    at: string;
+  }
 
-  // Placeholder rows. The real data shape mirrors `Activity` in
-  // apps/api/internal/http/handlers/activity.go (Phase 4).
-  const ITEMS: Item[] = [
-    {
-      kind: 'deploy',
-      title: 'cole-eckelberry.com',
-      detail: 'main@build · 47 ms p95',
-      when: '2h ago'
-    },
-    {
-      kind: 'commit',
-      title: 'fix(api): clamp activity cache TTL when github rate-limited',
-      detail: 'cole-eckelberry/portfolio',
-      when: '6h ago'
-    },
-    {
-      kind: 'commit',
-      title: 'feat(web): split-flap board now reads SSE deltas',
-      detail: 'cole-eckelberry/diamond-departures',
-      when: '1d ago'
-    },
-    {
-      kind: 'reading',
-      title: 'Designing Data-Intensive Applications',
-      detail: 'finished · ch. 7 transactions',
-      when: '3d ago'
-    },
-    {
-      kind: 'outdoors',
-      title: 'morning run · Los Gatos creek',
-      detail: '6.2 mi · 9:18/mi',
-      when: '4d ago'
+  type Status = 'loading' | 'ready' | 'degraded' | 'error';
+
+  let status = $state<Status>('loading');
+  let items = $state<ActivityItem[]>([]);
+
+  const REFRESH_MS = 5 * 60 * 1000;
+
+  async function fetchActivity() {
+    try {
+      const res = await fetch('/api/activity', { headers: { accept: 'application/json' } });
+      if (!res.ok) {
+        status = 'error';
+        return;
+      }
+      const body = (await res.json()) as { items: ActivityItem[]; degraded: boolean };
+      items = body.items;
+      status = body.degraded || items.length === 0 ? 'degraded' : 'ready';
+    } catch {
+      status = 'error';
     }
-  ];
+  }
+
+  onMount(() => {
+    void fetchActivity();
+    const id = setInterval(() => void fetchActivity(), REFRESH_MS);
+    return () => clearInterval(id);
+  });
 
   const KIND_LABEL: Record<ActivityKind, string> = {
-    deploy: 'deploy',
     commit: 'commit',
     release: 'release',
-    reading: 'reading',
-    outdoors: 'outdoors'
+    create: 'new repo',
+    pr: 'pr'
   };
 
   const KIND_COLOR: Record<ActivityKind, string> = {
-    deploy: 'var(--accent-teal)',
     commit: 'var(--accent-pink-soft)',
     release: 'var(--accent-amber)',
-    reading: 'var(--accent-purple-soft)',
-    outdoors: 'var(--accent-amber-soft)'
+    create: 'var(--accent-teal)',
+    pr: 'var(--accent-purple-soft)'
   };
 </script>
 
-<aside class="activity" aria-label="recent activity">
+<aside class="activity" aria-label="recent github activity">
   <header>
     <p class="eyebrow">recent activity</p>
-    <p class="dim">last 7 days</p>
+    <p class="dim">github.com/CEckelberry</p>
   </header>
 
-  <ul class="rows">
-    {#each ITEMS as item, i (i)}
-      <li class="row">
-        <span class="kind" style:--kind-color={KIND_COLOR[item.kind]}>
-          <span class="kind-dot" aria-hidden="true"></span>
-          {KIND_LABEL[item.kind]}
-        </span>
-        <span class="title">{item.title}</span>
-        {#if item.detail}
-          <span class="detail">{item.detail}</span>
-        {/if}
-        <time class="when">{item.when}</time>
-      </li>
-    {/each}
-  </ul>
+  {#if status === 'loading'}
+    <div class="placeholder">
+      <span class="dot" aria-hidden="true"></span>
+      <span>loading…</span>
+    </div>
+  {:else if status === 'ready'}
+    <ul class="rows">
+      {#each items as item, i (i)}
+        <li class="row">
+          <span class="kind" style:--kind-color={KIND_COLOR[item.kind]}>
+            <span class="kind-dot" aria-hidden="true"></span>
+            {KIND_LABEL[item.kind]}
+          </span>
+          <a class="title" href={item.url} rel="noopener" target="_blank">{item.title}</a>
+          <span class="detail">{item.repo}</span>
+          <time class="when" datetime={item.at}>{item.age_text}</time>
+        </li>
+      {/each}
+    </ul>
+  {:else}
+    <p class="empty">
+      {#if status === 'degraded'}
+        no recent public events. a fresh repo or a quiet week.
+      {:else}
+        couldn't reach github. try refreshing in a minute.
+      {/if}
+    </p>
+  {/if}
 
   <p class="footnote">
-    placeholder data — wired to <code>/api/activity</code> in phase 4.
+    pulled from the <a href="https://docs.github.com/rest/activity/events" rel="noopener"
+      >events api</a
+    >, cached 5 min upstream.
   </p>
 </aside>
 
@@ -129,6 +139,49 @@
     letter-spacing: 0.04em;
   }
 
+  /* Loading state */
+  .placeholder {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: var(--space-4) 0;
+    font-family: var(--font-mono);
+    font-size: var(--type-tiny);
+    color: var(--text-tertiary);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .placeholder .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--text-muted);
+    animation: blink 1.2s ease-in-out infinite;
+  }
+  @keyframes blink {
+    0%,
+    100% {
+      opacity: 0.3;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .placeholder .dot {
+      animation: none;
+    }
+  }
+
+  /* Empty state */
+  .empty {
+    margin: 0;
+    padding: var(--space-3) 0;
+    font-family: var(--font-serif);
+    font-style: italic;
+    color: var(--text-tertiary);
+  }
+
   .rows {
     list-style: none;
     margin: 0;
@@ -139,7 +192,7 @@
 
   .row {
     display: grid;
-    grid-template-columns: 88px 1fr auto;
+    grid-template-columns: 78px 1fr auto;
     grid-template-rows: auto auto;
     grid-template-areas:
       'kind title when'
@@ -177,6 +230,14 @@
     font-size: var(--type-body-sm);
     line-height: 1.4;
     color: var(--text-primary);
+    text-decoration: none;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    transition: color var(--dur-fast) var(--ease-out);
+  }
+  .title:hover {
+    color: var(--accent-pink-soft);
   }
 
   .detail {
@@ -185,6 +246,9 @@
     font-size: var(--type-tiny);
     color: var(--text-tertiary);
     letter-spacing: 0.04em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   .when {
@@ -203,9 +267,13 @@
     color: var(--text-muted);
     letter-spacing: 0.02em;
   }
-  .footnote code {
-    color: var(--accent-teal);
-    background: transparent;
-    padding: 0;
+  .footnote a {
+    color: var(--text-tertiary);
+    text-decoration: underline;
+    text-decoration-color: var(--accent-pink-soft);
+    text-underline-offset: 2px;
+  }
+  .footnote a:hover {
+    color: var(--text-primary);
   }
 </style>

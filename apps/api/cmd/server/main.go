@@ -12,6 +12,7 @@ import (
 	"time"
 
 	"github.com/CEckelberry/cole-resume-website/apps/api/internal/config"
+	"github.com/CEckelberry/cole-resume-website/apps/api/internal/github"
 	apphttp "github.com/CEckelberry/cole-resume-website/apps/api/internal/http"
 	"github.com/CEckelberry/cole-resume-website/apps/api/internal/logging"
 	"github.com/CEckelberry/cole-resume-website/apps/api/internal/store"
@@ -68,9 +69,20 @@ func main() {
 		contactStore = pool
 	}
 
+	// GitHub activity client. nil if no username — router falls back to
+	// a degraded payload.
+	var ghClient *github.Client
+	if cfg.GitHubUsername != "" {
+		ghClient = github.New(cfg.GitHubUsername, cfg.GitHubToken)
+		log.Info("github activity client ready",
+			slog.String("username", cfg.GitHubUsername),
+			slog.Bool("authenticated", cfg.GitHubToken != ""),
+		)
+	}
+
 	srv := &http.Server{
 		Addr:              ":" + cfg.Port,
-		Handler:           apphttp.NewRouter(cfg, log, contactStore),
+		Handler:           apphttp.NewRouter(cfg, log, contactStore, ghClient),
 		ReadHeaderTimeout: readHeaderTimeout,
 		WriteTimeout:      writeTimeout,
 		IdleTimeout:       idleTimeout,

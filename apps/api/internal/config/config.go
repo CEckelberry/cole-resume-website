@@ -24,14 +24,15 @@ const (
 )
 
 type Config struct {
-	Port               string
-	DatabaseURL        string
-	LogLevel           slog.Level
-	Environment        Environment
-	GitHubToken        string
-	DiscordWebhookURL  string
-	BuildSHA           string
-	Version            string
+	Port              string
+	DatabaseURL       string
+	LogLevel          slog.Level
+	Environment       Environment
+	GitHubToken       string
+	GitHubUsername    string
+	DiscordWebhookURL string
+	BuildSHA          string
+	Version           string
 }
 
 // Load reads env vars (and an optional .env file in CWD) and returns a Config.
@@ -49,6 +50,7 @@ func Load() (*Config, error) {
 		LogLevel:          parseLogLevel(getenv("LOG_LEVEL", defaultLogLevel(env))),
 		Environment:       env,
 		GitHubToken:       os.Getenv("GITHUB_TOKEN"),
+		GitHubUsername:    getenv("GITHUB_USERNAME", "CEckelberry"),
 		DiscordWebhookURL: os.Getenv("DISCORD_WEBHOOK_URL"),
 		BuildSHA:          getenv("BUILD_SHA", "dev"),
 		Version:           getenv("VERSION", "dev"),

@@ -23,14 +23,15 @@ const config = {
   kit: {
     adapter: adapter(),
     prerender: {
-      // Routes that aren't built yet but are linked from prerendered pages.
-      // /journal — Phase 4 markdown blog.
       // /cv — Phase 3 PDF (the link works once the PDF is generated/dropped in static/).
       handleHttpError: ({ path, referrer, message }) => {
-        const allowedMissing = new Set(['/journal', '/cv']);
+        const allowedMissing = new Set(['/cv']);
         if (allowedMissing.has(path)) return;
         throw new Error(`prerender error at ${path} (linked from ${referrer}): ${message}`);
-      }
+      },
+      // /journal/[slug] is prerender=true but has no posts at v1, so its
+      // entries() returns []. SvelteKit 2.59 requires explicit handling.
+      handleUnseenRoutes: 'ignore'
     }
   }
 };

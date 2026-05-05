@@ -10,22 +10,32 @@
 
 <div class="bio">
   <p class="opener">
-    I started as a systems engineer at GE in 2012, writing Bash and Perl to keep one of the largest
-    backup environments in the world running.
+    I started as a systems engineer at GE in 2012, writing Bash and Perl to keep 7+ PB of backup
+    data flowing across 9,200 servers — one of the largest backup environments in the world at the
+    time.
   </p>
 
   <p>
-    Python has been my main language for about eight years; JavaScript and TypeScript came right
-    alongside it, with React in professional settings. Over a decade I worked through cloud and
-    DevOps roles at NIAID, RoundTower, MediaMonks, Hex, and Pinterest. Today I'm a Senior DevOps /
-    Platform Engineer based in the Bay Area.
+    Over the next decade I worked through cloud and DevOps roles at NIAID (1,400 federal-research
+    clients, 5.5 PB of data), RoundTower, MediaMonks, Hex, and Pinterest. Each one taught a
+    different flavor of "ops is half the product."
   </p>
 
   <p>
-    Frontend frameworks came later. SvelteKit clicked about two years ago — this site is built on
-    it. Go I picked up six months ago, mostly to have a sharper tool for the small services in the
-    projects above. The four projects there are how I learn — by building things I'd actually want
-    to use.
+    My main languages have been <strong>Python</strong> for about eight years and
+    <strong>JavaScript / TypeScript</strong> alongside it, with <strong>React</strong> in
+    professional settings. The infrastructure stack I lean on is the boring-on-purpose one:
+    <strong>Kubernetes</strong>, <strong>Terraform</strong>, <strong>GCP</strong> and
+    <strong>AWS</strong>, <strong>Postgres</strong>, <strong>Docker</strong>, plus enough Bash since
+    2012 that I will fight you about <code>set -euo pipefail</code>. Recently I've added
+    <strong>Go</strong> (six months) and <strong>SvelteKit</strong> (two years) — this site is what I
+    made with them.
+  </p>
+
+  <p>
+    The four projects above are how I learn — by building things I'd actually want to use. They
+    cover the surface area I'm interested in: real-time backends, browser-side WASM, observability,
+    and the unglamorous infrastructure that holds all of it up.
   </p>
 
   <p class="closer">

@@ -8,24 +8,37 @@
 
   let { children } = $props();
 
-  // View transitions: 240ms cross-fade in browsers that support it. Browsers
-  // without support fall through to the regular SvelteKit navigation. Honor
-  // prefers-reduced-motion by skipping the transition entirely.
+  // View transitions: 240 ms cross-fade in browsers that support it.
+  // Browsers without support fall through to the regular SvelteKit
+  // navigation. Honor prefers-reduced-motion by skipping the transition.
+  //
+  // IMPORTANT: call `document.startViewTransition(...)` as a method, NOT
+  // by extracting the function reference and calling it standalone. The
+  // method needs its `this` bound to `document` — pulling it into a
+  // const drops the binding and the call throws on every navigation,
+  // which leaves SvelteKit's nav promise stuck and breaks subsequent
+  // links until reload.
+  type DocWithVT = Document & {
+    startViewTransition?: (cb: () => Promise<void> | void) => { finished: Promise<void> };
+  };
+
   onNavigate((navigation) => {
     if (typeof document === 'undefined') return;
-    const startViewTransition = (
-      document as Document & {
-        startViewTransition?: (cb: () => Promise<void>) => { finished: Promise<void> };
-      }
-    ).startViewTransition;
-    if (!startViewTransition) return;
+    const doc = document as DocWithVT;
+    if (typeof doc.startViewTransition !== 'function') return;
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
     return new Promise<void>((resolve) => {
-      startViewTransition(async () => {
+      try {
+        doc.startViewTransition!(async () => {
+          resolve();
+          await navigation.complete;
+        });
+      } catch {
+        // If the API throws for any reason, unblock the navigation so
+        // the page still updates. Worst case: no transition this time.
         resolve();
-        await navigation.complete;
-      });
+      }
     });
   });
 </script>
