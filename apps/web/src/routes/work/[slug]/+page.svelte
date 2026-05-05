@@ -1,14 +1,16 @@
 <script lang="ts">
   import type { PageProps } from './$types';
+  import SEO from '$lib/components/shell/SEO.svelte';
 
   let { data }: PageProps = $props();
   const Content = $derived(data.Content);
+
+  const seoTitle = $derived(
+    `${data.meta.title}${data.meta.italicWord ? ' ' + data.meta.italicWord : ''}`
+  );
 </script>
 
-<svelte:head>
-  <title>{data.meta.title} {data.meta.italicWord ?? ''} — cole eckelberry</title>
-  <meta name="description" content={data.meta.summary} />
-</svelte:head>
+<SEO title={seoTitle} description={data.meta.summary} path="/work/{data.slug}" type="article" />
 
 <article class="case-study">
   <Content />

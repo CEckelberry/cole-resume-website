@@ -1,3 +1,14 @@
-# allow crawling everything by default
 User-agent: *
-Disallow:
+Allow: /
+
+# AI bots — opt out by default. Toggle if/when policy changes.
+User-agent: GPTBot
+Disallow: /
+User-agent: ClaudeBot
+Disallow: /
+User-agent: anthropic-ai
+Disallow: /
+User-agent: CCBot
+Disallow: /
+
+Sitemap: https://cole-eckelberry.com/sitemap.xml

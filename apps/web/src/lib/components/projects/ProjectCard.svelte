@@ -33,7 +33,7 @@
   style:--card-accent={ACCENT_COLOR[project.accent]}
   style:--card-accent-soft={ACCENT_SOFT[project.accent]}
   data-accent={project.accent}
-  aria-label="{project.title} {project.italicWord ?? ''} — case study"
+  aria-label="case study: {project.title} {project.italicWord ?? ''} — {project.description}"
 >
   <div class="preview">
     {@render preview()}

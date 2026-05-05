@@ -14,7 +14,11 @@ const config = {
   ],
   compilerOptions: {
     // Force runes mode for the project, except for libraries. Can be removed in svelte 6.
-    runes: ({ filename }) => (filename.split(/[/\\]/).includes('node_modules') ? undefined : true)
+    runes: ({ filename }) => (filename.split(/[/\\]/).includes('node_modules') ? undefined : true),
+    // mdsvex 0.12 emits `<script context="module">` which Svelte 5 deprecated
+    // in favor of `<script module>`. Until mdsvex updates, silence the noise
+    // — the code still works.
+    warningFilter: (w) => w.code !== 'script_context_deprecated'
   },
   kit: {
     adapter: adapter(),

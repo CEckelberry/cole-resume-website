@@ -5,7 +5,10 @@
   import ProjectsSection from '$lib/components/projects/ProjectsSection.svelte';
   import AboutSection from '$lib/components/about/AboutSection.svelte';
   import ContactSection from '$lib/components/contact/ContactSection.svelte';
+  import SEO from '$lib/components/shell/SEO.svelte';
 </script>
+
+<SEO path="/" />
 
 <Hero>
   {#snippet terminal()}

@@ -1,51 +1,64 @@
+<!--
+  Custom error page. SvelteKit renders this for any `error` thrown during
+  load() or navigation, including 404s.
+  Cotton-candy aesthetic; gives the visitor a way back instead of a wall.
+-->
 <script lang="ts">
-  // Phase 4: real markdown blog. v1 ships this placeholder so the writing
-  // nav link doesn't 404 — and so visitors who land here have a reason to
-  // come back (or follow elsewhere) instead of bouncing.
-  import SEO from '$lib/components/shell/SEO.svelte';
+  import { page } from '$app/state';
+
+  const status = $derived(page.status);
+  const message = $derived(page.error?.message ?? '');
+
+  const isNotFound = $derived(status === 404);
 </script>
 
-<SEO
-  title="writing"
-  description="A journal of build notes from the four side projects on this site. Coming soon."
-  path="/journal"
-/>
+<svelte:head>
+  <title>{status} — cole eckelberry</title>
+  <meta name="robots" content="noindex" />
+</svelte:head>
 
-<section class="placeholder">
-  <p class="eyebrow">section · writing</p>
-  <h1>
-    A journal of build notes lives <em>here.</em>
-  </h1>
-  <p class="lead">
-    Each side project on this site gets a writing thread — design choices, things that surprised me,
-    postmortems when something falls over. The first post lands when the first project ships.
-  </p>
+<section class="error">
+  <p class="eyebrow">error · {status}</p>
+
+  {#if isNotFound}
+    <h1>
+      That page lives <em>somewhere else.</em>
+    </h1>
+    <p class="lead">
+      Either the link rotted or it's a route that hasn't shipped yet. The home page is a good place
+      to land while we figure it out.
+    </p>
+  {:else}
+    <h1>
+      Something <em>broke.</em>
+    </h1>
+    <p class="lead">
+      The server returned a {status}. {message ? `(${message})` : ''} Refresh in a minute, or use one
+      of the links below to keep moving.
+    </p>
+  {/if}
 
   <ul class="links">
-    <li>
-      <a href="/#work">see the projects this will write about</a>
-      <span aria-hidden="true">→</span>
-    </li>
-    <li>
-      <a href="https://github.com/CEckelberry" rel="me noopener">follow on github in the meantime</a
-      >
-      <span aria-hidden="true">→</span>
-    </li>
+    <li><a href="/">home</a><span aria-hidden="true">→</span></li>
+    <li><a href="/#work">see the projects</a><span aria-hidden="true">→</span></li>
+    <li><a href="/#about">about</a><span aria-hidden="true">→</span></li>
+    <li><a href="/#contact">say hi</a><span aria-hidden="true">→</span></li>
   </ul>
 
-  <p class="note">
-    There's no email list. If something I write is worth coming back for, an RSS feed will be on
-    this page too.
+  <p class="footnote">
+    if you got here from a link on this site, that's a bug — please mention it on the contact form
+    so I can fix it.
   </p>
 </section>
 
 <style>
-  .placeholder {
+  .error {
     display: flex;
     flex-direction: column;
     gap: var(--space-5);
     max-width: var(--container-prose);
-    padding-block: var(--space-7) var(--space-8);
+    padding-block: var(--space-8) var(--space-7);
+    min-height: calc(100dvh - 280px);
   }
 
   .eyebrow {
@@ -54,7 +67,7 @@
     font-size: var(--type-micro);
     text-transform: uppercase;
     letter-spacing: 0.18em;
-    color: var(--text-tertiary);
+    color: var(--accent-coral);
   }
 
   h1 {
@@ -89,7 +102,7 @@
     padding: 0;
     display: flex;
     flex-direction: column;
-    gap: var(--space-3);
+    gap: var(--space-2);
   }
 
   .links li {
@@ -104,7 +117,6 @@
     color: var(--text-primary);
     text-decoration: underline;
     text-decoration-color: var(--accent-pink-soft);
-    text-decoration-thickness: 1px;
     text-underline-offset: 4px;
     transition: text-decoration-color var(--dur-fast) var(--ease-out);
   }
@@ -112,7 +124,7 @@
     text-decoration-color: var(--accent-pink);
   }
 
-  .note {
+  .footnote {
     margin: var(--space-3) 0 0;
     font-family: var(--font-mono);
     font-size: var(--type-tiny);
