@@ -1,0 +1,265 @@
+@import 'tailwindcss';
+
+@import '@fontsource/inter/400.css';
+@import '@fontsource/inter/500.css';
+@import '@fontsource/instrument-serif/400.css';
+@import '@fontsource/instrument-serif/400-italic.css';
+@import '@fontsource/jetbrains-mono/400.css';
+@import '@fontsource/jetbrains-mono/500.css';
+
+/* ============================================================
+   Cotton candy palette — mode-independent tokens
+   ============================================================ */
+:root {
+  --accent-pink: #ed93b1;
+  --accent-pink-soft: #f4c0d1;
+  --accent-purple: #7f77dd;
+  --accent-purple-soft: #cecbf6;
+  --accent-teal: #5dcaa5;
+  --accent-teal-soft: #9fe1cb;
+  --accent-amber: #fac775;
+  --accent-amber-soft: #faeeda;
+  --accent-coral: #d85a30;
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 22px;
+  --space-6: 32px;
+  --space-7: 44px;
+  --space-8: 72px;
+
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-pill: 9999px;
+
+  --type-display: clamp(40px, 8vw, 76px);
+  --type-display-lh: 0.92;
+  --type-h1: clamp(36px, 6vw, 56px);
+  --type-h1-lh: 0.98;
+  --type-h2: clamp(28px, 4vw, 38px);
+  --type-h2-lh: 1.05;
+  --type-h3: 22px;
+  --type-h3-lh: 1.2;
+  --type-lead: 20px;
+  --type-lead-lh: 1.4;
+  --type-body: 14px;
+  --type-body-lh: 1.65;
+  --type-body-sm: 13px;
+  --type-body-sm-lh: 1.5;
+  --type-meta: 12px;
+  --type-meta-lh: 1.5;
+  --type-micro: 11px;
+  --type-micro-lh: 1.4;
+  --type-tiny: 10px;
+  --type-tiny-lh: 1.4;
+  --type-nano: 9px;
+  --type-nano-lh: 1.3;
+
+  --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --dur-fast: 150ms;
+  --dur-default: 240ms;
+  --dur-slow: 400ms;
+
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-serif: 'Instrument Serif', Georgia, serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --container-page: 1200px;
+  --container-prose: 720px;
+  --container-deck: 560px;
+}
+
+/* ============================================================
+   Light mode (default + explicit)
+   ============================================================ */
+:root,
+[data-mode='light'] {
+  --bg-canvas: #fefcf8;
+  --bg-surface: #faf7ff;
+  --bg-surface-2: rgb(255 255 255 / 0.6);
+  --bg-surface-3: rgb(255 255 255 / 0.85);
+  --text-primary: #1a1322;
+  --text-secondary: #444441;
+  --text-tertiary: #888780;
+  --text-muted: #b4b2a9;
+  --border-subtle: rgb(0 0 0 / 0.06);
+  --border-default: rgb(0 0 0 / 0.12);
+  --border-strong: rgb(0 0 0 / 0.2);
+  color-scheme: light;
+}
+
+/* ============================================================
+   Dark mode
+   ============================================================ */
+[data-mode='dark'] {
+  --bg-canvas: #0e0820;
+  --bg-surface: #1a0f3a;
+  --bg-surface-2: rgb(255 255 255 / 0.06);
+  --bg-surface-3: rgb(255 255 255 / 0.1);
+  --text-primary: #ffffff;
+  --text-secondary: rgb(255 255 255 / 0.78);
+  --text-tertiary: rgb(255 255 255 / 0.55);
+  --text-muted: rgb(255 255 255 / 0.4);
+  --border-subtle: rgb(255 255 255 / 0.12);
+  --border-default: rgb(255 255 255 / 0.18);
+  --border-strong: rgb(255 255 255 / 0.32);
+  color-scheme: dark;
+}
+
+/* ============================================================
+   Tailwind v4 — wire CSS vars to utility names via @theme inline
+   so utilities like `bg-canvas`, `text-primary`, `font-mono`,
+   `text-display`, etc. resolve through the cascade and respond
+   to data-mode changes.
+   ============================================================ */
+@theme inline {
+  --color-canvas: var(--bg-canvas);
+  --color-surface: var(--bg-surface);
+  --color-surface-2: var(--bg-surface-2);
+  --color-surface-3: var(--bg-surface-3);
+
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-tertiary: var(--text-tertiary);
+  --color-text-muted: var(--text-muted);
+
+  --color-border-subtle: var(--border-subtle);
+  --color-border-default: var(--border-default);
+  --color-border-strong: var(--border-strong);
+
+  --color-accent-pink: var(--accent-pink);
+  --color-accent-pink-soft: var(--accent-pink-soft);
+  --color-accent-purple: var(--accent-purple);
+  --color-accent-purple-soft: var(--accent-purple-soft);
+  --color-accent-teal: var(--accent-teal);
+  --color-accent-teal-soft: var(--accent-teal-soft);
+  --color-accent-amber: var(--accent-amber);
+  --color-accent-amber-soft: var(--accent-amber-soft);
+  --color-accent-coral: var(--accent-coral);
+
+  --font-sans: var(--font-sans);
+  --font-serif: var(--font-serif);
+  --font-mono: var(--font-mono);
+
+  --text-display: var(--type-display);
+  --text-display--line-height: var(--type-display-lh);
+  --text-h1: var(--type-h1);
+  --text-h1--line-height: var(--type-h1-lh);
+  --text-h2: var(--type-h2);
+  --text-h2--line-height: var(--type-h2-lh);
+  --text-h3: var(--type-h3);
+  --text-h3--line-height: var(--type-h3-lh);
+  --text-lead: var(--type-lead);
+  --text-lead--line-height: var(--type-lead-lh);
+  --text-body: var(--type-body);
+  --text-body--line-height: var(--type-body-lh);
+  --text-body-sm: var(--type-body-sm);
+  --text-body-sm--line-height: var(--type-body-sm-lh);
+  --text-meta: var(--type-meta);
+  --text-meta--line-height: var(--type-meta-lh);
+  --text-micro: var(--type-micro);
+  --text-micro--line-height: var(--type-micro-lh);
+  --text-tiny: var(--type-tiny);
+  --text-tiny--line-height: var(--type-tiny-lh);
+  --text-nano: var(--type-nano);
+  --text-nano--line-height: var(--type-nano-lh);
+
+  --spacing-1: var(--space-1);
+  --spacing-2: var(--space-2);
+  --spacing-3: var(--space-3);
+  --spacing-4: var(--space-4);
+  --spacing-5: var(--space-5);
+  --spacing-6: var(--space-6);
+  --spacing-7: var(--space-7);
+  --spacing-8: var(--space-8);
+
+  --radius-sm: var(--radius-sm);
+  --radius-md: var(--radius-md);
+  --radius-lg: var(--radius-lg);
+  --radius-xl: var(--radius-xl);
+  --radius-pill: var(--radius-pill);
+
+  --ease-out: var(--ease-out);
+  --ease-in-out: var(--ease-in-out);
+  --ease-spring: var(--ease-spring);
+}
+
+/* ============================================================
+   Base
+   ============================================================ */
+html {
+  background: var(--bg-canvas);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: var(--type-body);
+  line-height: var(--type-body-lh);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  min-height: 100dvh;
+  background: var(--bg-canvas);
+  color: var(--text-primary);
+}
+
+/* Editorial italic accent inside headings */
+h1 em,
+h2 em,
+h3 em {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--accent-pink-soft);
+}
+
+/* JetBrains Mono uppercase microcopy */
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--type-micro);
+  line-height: var(--type-micro-lh);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--text-tertiary);
+}
+
+/* Visible focus ring */
+:where(a, button, [role='button'], input, select, textarea):focus-visible {
+  outline: 2px solid var(--accent-pink);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* Skip link */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 16px;
+  padding: 8px 12px;
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  border-radius: var(--radius-md);
+  z-index: 100;
+}
+.skip-link:focus {
+  top: 16px;
+}
+
+/* Honor reduced motion globally as a last-resort fallback */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

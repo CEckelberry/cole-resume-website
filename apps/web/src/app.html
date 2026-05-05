@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en" data-theme="cotton-candy" data-mode="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0e0820" />
+    <script>
+      // Pre-paint mode resolution: avoid flash of wrong theme.
+      // Read localStorage first, then prefers-color-scheme, default to dark.
+      (function () {
+        try {
+          var stored = localStorage.getItem('mode');
+          var mode =
+            stored === 'light' || stored === 'dark'
+              ? stored
+              : window.matchMedia('(prefers-color-scheme: light)').matches
+                ? 'light'
+                : 'dark';
+          document.documentElement.setAttribute('data-mode', mode);
+          document.documentElement.style.colorScheme = mode;
+        } catch (_) {
+          /* localStorage unavailable; default `dark` from html attribute holds */
+        }
+      })();
+    </script>
+    %sveltekit.head%
+  </head>
+  <body data-sveltekit-preload-data="hover">
+    <div style="display: contents">%sveltekit.body%</div>
+  </body>
+</html>
