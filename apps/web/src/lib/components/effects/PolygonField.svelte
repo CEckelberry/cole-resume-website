@@ -3,9 +3,15 @@
   in front of the mesh. Procedural placement seeded by a numeric `seed` so
   re-renders are stable (no Math.random flicker between SSR and hydration).
 
-  At v1: 4–6 polygons per viewport-height of layout. No scroll-tied animation.
+  Scroll-driven rotation: each polygon has its own `rate` (deg/px), some
+  positive (clockwise), some negative (counter), so the field never feels
+  synced. The base rotation is set on the SVG transform attribute so the
+  SSR output already looks intentional; the client takes over on first
+  scroll. prefers-reduced-motion skips the listener entirely.
 -->
 <script lang="ts">
+  import { onMount } from 'svelte';
+
   type AccentClass = 'pink' | 'teal' | 'purple' | 'amber';
 
   interface Props {
@@ -36,7 +42,10 @@
     points: string;
     accent: AccentClass;
     opacity: number;
+    /** Static rotation offset, applied at SSR time. */
     rotate: number;
+    /** Scroll rate in deg/px; ±0.04 to ±0.18, signed so directions vary. */
+    rate: number;
     cx: number;
     cy: number;
   };
@@ -52,6 +61,10 @@
       const rotate = rng() * 360;
       const accent = accents[Math.floor(rng() * accents.length)];
       const opacity = 0.14 + rng() * 0.21;
+      // Rate magnitude 0.04–0.18 deg/px, sign randomized so the field
+      // contains a mix of clockwise and counter-clockwise spinners.
+      const rateMag = 0.04 + rng() * 0.14;
+      const rate = rng() < 0.5 ? rateMag : -rateMag;
 
       const pts: string[] = [];
       for (let s = 0; s < sides; s++) {
@@ -60,7 +73,7 @@
         const py = Math.sin(a) * r;
         pts.push(`${px.toFixed(1)},${py.toFixed(1)}`);
       }
-      out.push({ points: pts.join(' '), accent, opacity, rotate, cx, cy });
+      out.push({ points: pts.join(' '), accent, opacity, rotate, rate, cx, cy });
     }
     return out;
   })();
@@ -71,17 +84,57 @@
     purple: 'var(--accent-purple)',
     amber: 'var(--accent-amber)'
   };
+
+  // Refs for the inner rotor groups; the scroll handler mutates their
+  // transform attributes directly to skip Svelte's scheduler on a hot loop.
+  let rotorEls: SVGGElement[] = $state([]);
+
+  onMount(() => {
+    // SSR has already set the base rotation. Reduced-motion stops here.
+    if (typeof window === 'undefined') return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    let scheduled = false;
+    let rafId = 0;
+
+    const apply = () => {
+      scheduled = false;
+      const y = window.scrollY;
+      for (let i = 0; i < polys.length; i++) {
+        const el = rotorEls[i];
+        if (!el) continue;
+        const angle = polys[i].rotate + y * polys[i].rate;
+        el.setAttribute('transform', `rotate(${angle.toFixed(2)})`);
+      }
+    };
+
+    const onScroll = () => {
+      if (scheduled) return;
+      scheduled = true;
+      rafId = requestAnimationFrame(apply);
+    };
+
+    apply();
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      cancelAnimationFrame(rafId);
+    };
+  });
 </script>
 
 <svg class="polygon-field" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
-  {#each polys as p (`${p.cx}-${p.cy}-${p.points}`)}
-    <g transform="translate({p.cx} {p.cy}) rotate({p.rotate})">
-      <polygon
-        points={p.points}
-        fill={accentVar[p.accent]}
-        opacity={p.opacity}
-        transform="scale(0.35)"
-      />
+  {#each polys as p, i (`${p.cx}-${p.cy}-${p.points}`)}
+    <g transform="translate({p.cx} {p.cy})">
+      <g bind:this={rotorEls[i]} transform="rotate({p.rotate})">
+        <polygon
+          points={p.points}
+          fill={accentVar[p.accent]}
+          opacity={p.opacity}
+          transform="scale(0.35)"
+        />
+      </g>
     </g>
   {/each}
 </svg>
