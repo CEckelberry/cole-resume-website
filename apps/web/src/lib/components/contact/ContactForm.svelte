@@ -45,7 +45,10 @@
       const body = new URLSearchParams({
         'entry.1334858943': name,
         'entry.701278000': email,
-        'entry.51477920': message
+        'entry.51477920': message,
+        fvv: '1',
+        pageHistory: '0',
+        fbzx: String(Math.floor(Math.random() * 9e15))
       });
 
       // Google Forms doesn't allow CORS reads — no-cors means we can't inspect
