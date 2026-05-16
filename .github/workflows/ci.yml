@@ -55,6 +55,64 @@ jobs:
       - run: go test -race ./...
       - run: go build ./...
 
-  # NOTE: a deploy job (build + push images, deploy to Cloud Run) will be
-  # added once the GCP project is provisioned. See .github/workflows/README.md
-  # for the secret bindings expected by that future job.
+  deploy:
+    name: build + deploy to Cloud Run
+    runs-on: ubuntu-latest
+    needs: [web, api]
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+
+    permissions:
+      contents: read
+      id-token: write
+
+    env:
+      REGISTRY: us-west1-docker.pkg.dev/exalted-kit-496514-s1/portfolio
+      REGION: us-west1
+      PROJECT: exalted-kit-496514-s1
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - id: auth
+        name: Authenticate to GCP
+        uses: google-github-actions/auth@v2
+        with:
+          workload_identity_provider: ${{ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.GCP_SA_EMAIL }}
+
+      - name: Configure Docker for Artifact Registry
+        run: gcloud auth configure-docker us-west1-docker.pkg.dev --quiet
+
+      - name: Build and push web image
+        run: |
+          docker build \
+            -f apps/web/Dockerfile \
+            -t $REGISTRY/web:${{ github.sha }} \
+            -t $REGISTRY/web:latest \
+            .
+          docker push $REGISTRY/web:${{ github.sha }}
+          docker push $REGISTRY/web:latest
+
+      - name: Build and push api image
+        run: |
+          docker build \
+            -f apps/api/Dockerfile \
+            -t $REGISTRY/api:${{ github.sha }} \
+            -t $REGISTRY/api:latest \
+            apps/api/
+          docker push $REGISTRY/api:${{ github.sha }}
+          docker push $REGISTRY/api:latest
+
+      - name: Deploy web to Cloud Run
+        uses: google-github-actions/deploy-cloudrun@v2
+        with:
+          service: portfolio-web
+          region: ${{ env.REGION }}
+          image: ${{ env.REGISTRY }}/web:${{ github.sha }}
+
+      - name: Deploy api to Cloud Run
+        uses: google-github-actions/deploy-cloudrun@v2
+        with:
+          service: portfolio-api
+          region: ${{ env.REGION }}
+          image: ${{ env.REGISTRY }}/api:${{ github.sha }}
