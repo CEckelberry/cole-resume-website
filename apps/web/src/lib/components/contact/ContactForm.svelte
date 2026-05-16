@@ -29,7 +29,7 @@
   }
 
   const FORM_ACTION =
-    'https://docs.google.com/forms/u/0/d/e/1FAIpQLSfGn3v8lSYvStCxbJ1mCnkAUtmP0AGpMAEkhNzFOdVGJ5d3WA/formResponse';
+    'https://docs.google.com/forms/d/e/1FAIpQLSfGn3v8lSYvStCxbJ1mCnkAUtmP0AGpMAEkhNzFOdVGJ5d3WA/formResponse';
 
   async function submit(event: SubmitEvent) {
     event.preventDefault();
