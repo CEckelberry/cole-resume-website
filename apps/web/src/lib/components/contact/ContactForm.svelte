@@ -43,9 +43,9 @@
     errors = {};
     try {
       const body = new URLSearchParams({
-        'entry.1096109394': name,
-        'entry.565162637': email,
-        'entry.770657503': message
+        'entry.1334858943': name,
+        'entry.701278000': email,
+        'entry.51477920': message
       });
 
       // Google Forms doesn't allow CORS reads — no-cors means we can't inspect
