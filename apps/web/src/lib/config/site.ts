@@ -11,4 +11,4 @@ export const DEFAULT_DESCRIPTION =
   'Senior DevOps / platform engineer in the Bay Area. Ten years of cloud and Python; SvelteKit and Go on the side. Four open-source side projects below.';
 
 /** Used as the default og:image — a static SVG; dynamic per-page OG comes in v2 via satori. */
-export const DEFAULT_OG_IMAGE_PATH = '/og.svg';
+export const DEFAULT_OG_IMAGE_PATH = '/og.png';
