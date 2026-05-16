@@ -28,11 +28,13 @@
     return Object.keys(next).length === 0;
   }
 
+  const FORM_ACTION =
+    'https://docs.google.com/forms/u/0/d/e/1FAIpQLSfGn3v8lSYvStCxbJ1mCnkAUtmP0AGpMAEkhNzFOdVGJ5d3WA/formResponse';
+
   async function submit(event: SubmitEvent) {
     event.preventDefault();
     if (!validate()) return;
     if (honeypot.trim()) {
-      // Pretend success so a spam bot doesn't get useful feedback.
       status = 'success';
       return;
     }
@@ -40,30 +42,22 @@
     status = 'submitting';
     errors = {};
     try {
-      const res = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'content-type': 'application/json' },
-        body: JSON.stringify({ name, email, message })
+      const body = new URLSearchParams({
+        'entry.1096109394': name,
+        'entry.565162637': email,
+        'entry.770657503': message
       });
 
-      if (res.status === 429) {
-        errors = { form: 'too many submissions from this IP. try again in an hour.' };
-        status = 'error';
-        return;
-      }
-      if (!res.ok) {
-        const body = (await res.json().catch(() => null)) as { error?: string } | null;
-        errors = { form: body?.error ?? 'something went wrong on our side. try again.' };
-        status = 'error';
-        return;
-      }
+      // Google Forms doesn't allow CORS reads — no-cors means we can't inspect
+      // the response, so we optimistically treat every non-thrown fetch as success.
+      await fetch(FORM_ACTION, { method: 'POST', mode: 'no-cors', body });
 
       status = 'success';
       name = '';
       email = '';
       message = '';
     } catch {
-      errors = { form: 'network error. is the api running?' };
+      errors = { form: 'network error. check your connection and try again.' };
       status = 'error';
     }
   }
