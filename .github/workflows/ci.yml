@@ -20,11 +20,11 @@ jobs:
       run:
         working-directory: apps/web
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
-      - uses: pnpm/action-setup@v4
+      - uses: pnpm/action-setup@v6
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v6
         with:
           node-version: 22
           cache: pnpm
@@ -45,9 +45,9 @@ jobs:
       run:
         working-directory: apps/api
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
-      - uses: actions/setup-go@v5
+      - uses: actions/setup-go@v6
         with:
           go-version-file: apps/api/go.mod
           cache-dependency-path: apps/api/go.sum
@@ -72,7 +72,7 @@ jobs:
       PROJECT: exalted-kit-496514-s1
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - id: auth
         name: Authenticate to GCP
