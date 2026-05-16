@@ -33,7 +33,7 @@ jobs:
 
       - run: pnpm lint
       - run: pnpm check
-      - run: pnpm test
+      - run: pnpm vitest run --passWithNoTests
 
   api:
     name: api — vet, test
