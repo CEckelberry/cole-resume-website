@@ -9,7 +9,6 @@
 />
 
 <article class="resume">
-
   <!-- ── Header ── -->
   <header class="r-header">
     <p class="eyebrow">résumé · 2026</p>
@@ -25,13 +24,15 @@
       <a href="https://linkedin.com/in/cole-eckelberry" target="_blank" rel="noopener">LinkedIn</a>
     </div>
     <div class="r-actions">
-      <a
-        href="/Cole_Eckelberry_Senior_DevOps_Platform_Engineer.pdf"
-        download
-        class="btn-download"
-      >
+      <a href="/Cole_Eckelberry_Senior_DevOps_Platform_Engineer.pdf" download class="btn-download">
         <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-          <path d="M7 1v8M4 6l3 3 3-3M2 11h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path
+            d="M7 1v8M4 6l3 3 3-3M2 11h10"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
         </svg>
         download pdf
       </a>
@@ -45,16 +46,18 @@
     <p class="eyebrow section-label">profile</p>
     <div class="r-prose">
       <p>
-        Cloud Architect and DevOps Technical Lead with a mission to help organizations thrive through
-        the power of technology. Expertise in designing scalable, efficient solutions and translating
-        complex infrastructure challenges into clean, maintainable systems. Over 10 years of experience
-        across AWS, GCP, and Azure — leading large-scale cloud migrations, modernizing legacy
-        application stacks, and building the DevOps foundations that engineering teams rely on daily.
+        Cloud Architect and DevOps Technical Lead with a mission to help organizations thrive
+        through the power of technology. Expertise in designing scalable, efficient solutions and
+        translating complex infrastructure challenges into clean, maintainable systems. Over 10
+        years of experience across AWS, GCP, and Azure — leading large-scale cloud migrations,
+        modernizing legacy application stacks, and building the DevOps foundations that engineering
+        teams rely on daily.
       </p>
       <p>
-        Collaborative and forward-thinking: equally effective working with developers and stakeholders
-        as going deep in infrastructure. Leads by example, mentors teams on cloud-native best practices,
-        and consistently drives initiatives from concept through to production.
+        Collaborative and forward-thinking: equally effective working with developers and
+        stakeholders as going deep in infrastructure. Leads by example, mentors teams on
+        cloud-native best practices, and consistently drives initiatives from concept through to
+        production.
       </p>
     </div>
   </section>
@@ -66,7 +69,6 @@
     <p class="eyebrow section-label">experience</p>
 
     <div class="timeline">
-
       <div class="entry">
         <div class="entry-head">
           <div>
@@ -83,16 +85,36 @@
           teams depend on daily.
         </p>
         <ul class="entry-achievements">
-          <li>Orchestrated the migration of 60+ applications to GCP and AWS, establishing foundational Terraform IaC templates for GCS, Pub/Sub, Cloud SQL, GCE, and Secret Manager as the organization-wide standard</li>
-          <li>Containerized and deployed applications to Google Cloud Run and GKE, modernizing the deployment architecture away from legacy GCE VM-based workflows</li>
-          <li>Built and standardized a company-wide CI/CD release process in GitLab, incorporating code scanning (SonarQube), PHP linters, bug fixers, and vulnerability scanners</li>
-          <li>Architected Lisaria — a unified batch and queue management platform consolidating a fragmented series of legacy applications into a single scalable solution</li>
-          <li>Overhauled developer onboarding and enabled local development workflows for containerized applications, significantly reducing friction across the engineering org</li>
-          <li>Established comprehensive GCP-native logging, monitoring, and alerting, replacing legacy Centreon infrastructure with real-time observability across all services</li>
+          <li>
+            Orchestrated the migration of 60+ applications to GCP and AWS, establishing foundational
+            Terraform IaC templates for GCS, Pub/Sub, Cloud SQL, GCE, and Secret Manager as the
+            organization-wide standard
+          </li>
+          <li>
+            Containerized and deployed applications to Google Cloud Run and GKE, modernizing the
+            deployment architecture away from legacy GCE VM-based workflows
+          </li>
+          <li>
+            Built and standardized a company-wide CI/CD release process in GitLab, incorporating
+            code scanning (SonarQube), PHP linters, bug fixers, and vulnerability scanners
+          </li>
+          <li>
+            Architected Lisaria — a unified batch and queue management platform consolidating a
+            fragmented series of legacy applications into a single scalable solution
+          </li>
+          <li>
+            Overhauled developer onboarding and enabled local development workflows for
+            containerized applications, significantly reducing friction across the engineering org
+          </li>
+          <li>
+            Established comprehensive GCP-native logging, monitoring, and alerting, replacing legacy
+            Centreon infrastructure with real-time observability across all services
+          </li>
         </ul>
         <p class="entry-tools">
           <span class="tools-label">Toolset:</span>
-          GCP, GKE, Cloud Run, GCS, Cloud SQL, GitLab, Terraform, Ansible, Docker, Kubernetes, SonarQube, PHP, Jira, AWS
+          GCP, GKE, Cloud Run, GCS, Cloud SQL, GitLab, Terraform, Ansible, Docker, Kubernetes, SonarQube,
+          PHP, Jira, AWS
         </p>
       </div>
 
@@ -112,14 +134,29 @@
           principles.
         </p>
         <ul class="entry-achievements">
-          <li>Provided Cloud Architecture guidance on AWS IAM security stacks — role design, policy scoping, and secure resource access patterns across a massive multi-account AWS environment</li>
-          <li>Authored and maintained Terraform modules for AWS IAM roles, subnets, security groups, and firewall rules, contributing to a standardized IaC approach used across the infrastructure org</li>
-          <li>Managed GKE clusters: service account bindings, Workload Identity configurations, and Kubernetes RBAC ensuring secure pod-level access to GCP secrets and downstream services</li>
-          <li>Contributed to ArgoCD-based GitOps workflows for deploying and managing GKE workloads, supporting continuous delivery pipelines across internal platform services</li>
+          <li>
+            Provided Cloud Architecture guidance on AWS IAM security stacks — role design, policy
+            scoping, and secure resource access patterns across a massive multi-account AWS
+            environment
+          </li>
+          <li>
+            Authored and maintained Terraform modules for AWS IAM roles, subnets, security groups,
+            and firewall rules, contributing to a standardized IaC approach used across the
+            infrastructure org
+          </li>
+          <li>
+            Managed GKE clusters: service account bindings, Workload Identity configurations, and
+            Kubernetes RBAC ensuring secure pod-level access to GCP secrets and downstream services
+          </li>
+          <li>
+            Contributed to ArgoCD-based GitOps workflows for deploying and managing GKE workloads,
+            supporting continuous delivery pipelines across internal platform services
+          </li>
         </ul>
         <p class="entry-tools">
           <span class="tools-label">Toolset:</span>
-          AWS, GCP, GKE, Lambda, Terraform, ArgoCD, Kubernetes, IAM, Secret Manager, Workload Identity, GitHub
+          AWS, GCP, GKE, Lambda, Terraform, ArgoCD, Kubernetes, IAM, Secret Manager, Workload Identity,
+          GitHub
         </p>
       </div>
 
@@ -133,13 +170,18 @@
         </div>
         <p class="entry-body">
           Collaborated with data scientists worldwide to develop machine learning solutions within
-          Hex's hosted Jupyter Notebook environment. Provided feedback to engineering teams on product
-          performance, customer sentiment, and new feature ideas, while leveraging Python and cloud
-          technologies to create custom solutions for clients.
+          Hex's hosted Jupyter Notebook environment. Provided feedback to engineering teams on
+          product performance, customer sentiment, and new feature ideas, while leveraging Python
+          and cloud technologies to create custom solutions for clients.
         </p>
         <ul class="entry-achievements">
-          <li>Consistently worked with Python packages and data science models for customer machine learning implementations</li>
-          <li>Helped create custom solutions for customers using Google Cloud and AWS integrations</li>
+          <li>
+            Consistently worked with Python packages and data science models for customer machine
+            learning implementations
+          </li>
+          <li>
+            Helped create custom solutions for customers using Google Cloud and AWS integrations
+          </li>
           <li>Created architecture diagrams, demo projects, dbt models, and data visualizations</li>
         </ul>
         <p class="entry-tools">
@@ -184,12 +226,19 @@
           $6,000 monthly in AWS S3 storage costs.
         </p>
         <ul class="entry-achievements">
-          <li>Implemented team-first array-based snapshot technology, decreasing backup times by over 70% for VMware and NAS backups while reducing performance load</li>
-          <li>Saved a customer over $6,000 a month in AWS S3 storage costs due to a backup misconfiguration discovery</li>
+          <li>
+            Implemented team-first array-based snapshot technology, decreasing backup times by over
+            70% for VMware and NAS backups while reducing performance load
+          </li>
+          <li>
+            Saved a customer over $6,000 a month in AWS S3 storage costs due to a backup
+            misconfiguration discovery
+          </li>
         </ul>
         <p class="entry-tools">
           <span class="tools-label">Toolset:</span>
-          AWS, GCP, Azure, S3, Ansible, GitHub, Perl, PowerShell, Bash, VMware, ServiceNow, Python, TypeScript/JS, Node
+          AWS, GCP, Azure, S3, Ansible, GitHub, Perl, PowerShell, Bash, VMware, ServiceNow, Python, TypeScript/JS,
+          Node
         </p>
       </div>
 
@@ -197,17 +246,18 @@
         <div class="entry-head">
           <div>
             <h2 class="entry-role">Cloud / Systems Engineer</h2>
-            <p class="entry-org">National Institute of Allergic and Infectious Diseases (NIAID) · Washington, D.C.</p>
+            <p class="entry-org">
+              National Institute of Allergic and Infectious Diseases (NIAID) · Washington, D.C.
+            </p>
           </div>
           <time class="entry-date">Apr 2014 — May 2016</time>
         </div>
         <p class="entry-body">
-          Administered Commvault backups for over 1,400 clients, managing a total data size of
-          5.5 petabytes. Managed NetApp storage infrastructure and supported cloud adoption
-          initiatives across the institute.
+          Administered Commvault backups for over 1,400 clients, managing a total data size of 5.5
+          petabytes. Managed NetApp storage infrastructure and supported cloud adoption initiatives
+          across the institute.
         </p>
       </div>
-
     </div>
   </section>
 
@@ -217,19 +267,11 @@
   <section class="r-section">
     <p class="eyebrow section-label">skills</p>
     <div class="skills-grid">
-      {#each [
-        'Google Cloud', 'AWS', 'Azure',
-        'Terraform', 'Kubernetes', 'Docker',
-        'Python', 'Go', 'TypeScript / JS',
-        'Postgres', 'Kafka', 'REST / GraphQL',
-        'GitLab CI', 'ArgoCD', 'Ansible',
-        'GKE', 'Cloud Run', 'Pub/Sub',
-      ] as skill}
+      {#each ['Google Cloud', 'AWS', 'Azure', 'Terraform', 'Kubernetes', 'Docker', 'Python', 'Go', 'TypeScript / JS', 'Postgres', 'Kafka', 'REST / GraphQL', 'GitLab CI', 'ArgoCD', 'Ansible', 'GKE', 'Cloud Run', 'Pub/Sub'] as skill (skill)}
         <span class="skill-tag">{skill}</span>
       {/each}
     </div>
   </section>
-
 </article>
 
 <style>
@@ -480,7 +522,9 @@
 
   /* ── Print ── */
   @media print {
-    .r-actions { display: none; }
+    .r-actions {
+      display: none;
+    }
 
     .resume {
       gap: 24px;
