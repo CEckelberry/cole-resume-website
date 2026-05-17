@@ -4,7 +4,7 @@
   Anatomy:
     eyebrow            PORTFOLIO · 2026
     name               Cole Eckelberry        (gradient last name)
-    tagline            A platform engineer who keeps *making weird things* after 5pm.
+    tagline            A platform engineer who keeps *making strange things* after 5pm.
     bio                Ten years of building cloud platforms by day. Four side
                        projects below — all open source, all live.
     ctas               [see the work →]   [cv.pdf]
@@ -31,7 +31,7 @@
     <HeroName />
 
     <p class="tagline">
-      A platform engineer who keeps <em class="accent">making weird things</em> after 5pm.
+      A platform engineer who keeps <em class="accent">making strange things</em> after 5pm.
     </p>
 
     <p class="bio">
@@ -44,7 +44,7 @@
         see the work
         <span aria-hidden="true">→</span>
       </Button>
-      <Button href="/cv" variant="secondary" size="lg">cv.pdf</Button>
+      <Button href="/resume" variant="secondary" size="lg">résumé</Button>
     </div>
   </div>
 
@@ -102,7 +102,7 @@
     font-family: var(--font-serif);
     font-style: italic;
     font-weight: 400;
-    color: var(--accent-pink-soft);
+    color: var(--accent-pink-emphasis);
     /* Soft underline highlight: sits below the baseline, behind the glyphs.
        linear-gradient lets it resize cleanly with text wrapping. */
     background-image: linear-gradient(

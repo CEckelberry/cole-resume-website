@@ -94,6 +94,8 @@
   --border-subtle: rgb(0 0 0 / 0.06);
   --border-default: rgb(0 0 0 / 0.12);
   --border-strong: rgb(0 0 0 / 0.2);
+  /* Deeper rose for text emphasis — --accent-pink-soft is too light on white */
+  --accent-pink-emphasis: #b83268;
   color-scheme: light;
 }
 
@@ -112,6 +114,7 @@
   --border-subtle: rgb(255 255 255 / 0.12);
   --border-default: rgb(255 255 255 / 0.18);
   --border-strong: rgb(255 255 255 / 0.32);
+  --accent-pink-emphasis: #f4c0d1;
   color-scheme: dark;
 }
 
@@ -220,7 +223,7 @@ h3 em {
   font-family: var(--font-serif);
   font-style: italic;
   font-weight: 400;
-  color: var(--accent-pink-soft);
+  color: var(--accent-pink-emphasis);
 }
 
 /* JetBrains Mono uppercase microcopy */

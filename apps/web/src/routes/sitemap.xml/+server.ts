@@ -12,7 +12,10 @@ interface Url {
   priority: number;
 }
 
-const STATIC_URLS: Url[] = [{ loc: '/', changefreq: 'weekly', priority: 1.0 }];
+const STATIC_URLS: Url[] = [
+  { loc: '/', changefreq: 'weekly', priority: 1.0 },
+  { loc: '/resume', changefreq: 'monthly', priority: 0.7 }
+];
 
 export const GET: RequestHandler = () => {
   const today = new Date().toISOString().slice(0, 10);

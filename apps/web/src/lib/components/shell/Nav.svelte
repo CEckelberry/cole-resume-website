@@ -25,6 +25,7 @@
   const links: LinkDef[] = [
     { href: '/#work', label: 'work' },
     { href: '/#about', label: 'about' },
+    { href: '/resume', label: 'résumé' },
     { href: '/#contact', label: 'contact' }
   ];
 </script>
