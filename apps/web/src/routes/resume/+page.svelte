@@ -24,12 +24,13 @@
       <a href="https://linkedin.com/in/cole-eckelberry" target="_blank" rel="noopener">LinkedIn</a>
     </div>
     <p class="r-pitch">
-      I help engineering organizations get out of their own way — replacing fragile manual processes
-      with automated pipelines, migrating on-premise bottlenecks to scalable cloud infrastructure,
-      and building the platforms and tooling that let product teams ship without asking for
-      permission. Whether it's untangling a decade of infrastructure debt or standing up a
-      greenfield platform from scratch, I get the foundations right so teams can move fast
-      sustainably.
+      Building the platforms and foundations that let engineering teams move fast and scale with
+      confidence — that's the through-line across 14 years working with companies on GCP, AWS,
+      Azure, and on-prem/hybrid systems. I've guided organizations through full cloud
+      transformations, modernized legacy infrastructure, containerized monolithic stacks, and built
+      the CI/CD pipelines that eliminate manual bottlenecks. I'm drawn to the hard problems: the
+      migrations that seem impossible, the systems that have never been touched, and the
+      architectures that need to be reinvented to support the next order of magnitude.
     </p>
     <div class="r-actions">
       <a href="/Cole_Eckelberry_Senior_DevOps_Platform_Engineer.pdf" download class="btn-download">

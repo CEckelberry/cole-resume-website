@@ -10,7 +10,7 @@
 <script lang="ts">
   import type { Snippet } from 'svelte';
   import type { Project } from '$lib/content/projects';
-  import { ACCENT_COLOR, ACCENT_SOFT } from '$lib/content/projects';
+  import { ACCENT_COLOR, ACCENT_SOFT, ACCENT_EMPHASIS } from '$lib/content/projects';
 
   interface Props {
     project: Project;
@@ -32,6 +32,7 @@
   href={project.caseStudyHref}
   style:--card-accent={ACCENT_COLOR[project.accent]}
   style:--card-accent-soft={ACCENT_SOFT[project.accent]}
+  style:--card-accent-emphasis={ACCENT_EMPHASIS[project.accent]}
   data-accent={project.accent}
   aria-label="case study: {project.title} {project.italicWord ?? ''} — {project.description}"
 >
@@ -145,7 +146,7 @@
     font-family: var(--font-serif);
     font-style: italic;
     font-weight: 400;
-    color: var(--card-accent-soft);
+    color: var(--card-accent-emphasis);
     margin-left: 4px;
   }
 

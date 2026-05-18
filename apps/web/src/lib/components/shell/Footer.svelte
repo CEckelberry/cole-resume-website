@@ -11,9 +11,15 @@
     { label: 'linkedin', href: 'https://www.linkedin.com/in/cole-eckelberry/' }
   ];
 
-  const contactLinks = [
+  type ContactLink = { label: string; href: string; download?: true };
+  const contactLinks: ContactLink[] = [
     { label: 'say hi →', href: '/#contact' },
-    { label: 'cv.pdf', href: '/cv' },
+    { label: 'résumé', href: '/resume' },
+    {
+      label: 'cv.pdf',
+      href: '/Cole_Eckelberry_Senior_DevOps_Platform_Engineer.pdf',
+      download: true
+    },
     { label: 'book a call', href: 'https://cal.com/coleeckelberry' }
   ];
 
@@ -65,7 +71,11 @@
       <ul>
         {#each contactLinks as link (link.href)}
           <li>
-            <a href={link.href} rel={link.href.startsWith('http') ? 'noopener' : undefined}>
+            <a
+              href={link.href}
+              rel={link.href.startsWith('http') ? 'noopener' : undefined}
+              download={link.download ?? undefined}
+            >
               {link.label}
             </a>
           </li>

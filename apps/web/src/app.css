@@ -94,8 +94,11 @@
   --border-subtle: rgb(0 0 0 / 0.06);
   --border-default: rgb(0 0 0 / 0.12);
   --border-strong: rgb(0 0 0 / 0.2);
-  /* Deeper rose for text emphasis — --accent-pink-soft is too light on white */
+  /* Deeper variants for text on white — the -soft tokens are too light */
   --accent-pink-emphasis: #b83268;
+  --accent-teal-emphasis: #1a8f6f;
+  --accent-purple-emphasis: #5a52c4;
+  --accent-amber-emphasis: #a05a10;
   color-scheme: light;
 }
 
@@ -115,6 +118,9 @@
   --border-default: rgb(255 255 255 / 0.18);
   --border-strong: rgb(255 255 255 / 0.32);
   --accent-pink-emphasis: #f4c0d1;
+  --accent-teal-emphasis: #9fe1cb;
+  --accent-purple-emphasis: #cecbf6;
+  --accent-amber-emphasis: #faeeda;
   color-scheme: dark;
 }
 

@@ -22,7 +22,14 @@
     { name: 'PostgreSQL' },
     { name: 'GCP' },
     { name: 'Docker' },
-    { name: 'Bash', aside: 'since 2012' }
+    { name: 'Bash' },
+    { name: 'GitLab CI' },
+    { name: 'GitHub Actions' },
+    { name: 'ArgoCD' },
+    { name: 'Go' },
+    { name: 'AWS' },
+    { name: 'Azure' },
+    { name: 'Ansible' }
   ];
 </script>
 

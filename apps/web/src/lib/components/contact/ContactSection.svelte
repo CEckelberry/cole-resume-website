@@ -59,7 +59,7 @@
     font-family: var(--font-serif);
     font-style: italic;
     font-weight: 400;
-    color: var(--accent-pink-soft);
+    color: var(--accent-pink-emphasis);
   }
 
   .lead {

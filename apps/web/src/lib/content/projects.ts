@@ -130,3 +130,10 @@ export const ACCENT_SOFT: Readonly<Record<ProjectAccent, string>> = {
   purple: 'var(--accent-purple-soft)',
   amber: 'var(--accent-amber-soft)'
 };
+
+export const ACCENT_EMPHASIS: Readonly<Record<ProjectAccent, string>> = {
+  pink: 'var(--accent-pink-emphasis)',
+  teal: 'var(--accent-teal-emphasis)',
+  purple: 'var(--accent-purple-emphasis)',
+  amber: 'var(--accent-amber-emphasis)'
+};
