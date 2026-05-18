@@ -23,6 +23,14 @@
       <span class="sep" aria-hidden="true">·</span>
       <a href="https://linkedin.com/in/cole-eckelberry" target="_blank" rel="noopener">LinkedIn</a>
     </div>
+    <p class="r-pitch">
+      I help engineering organizations get out of their own way — replacing fragile manual processes
+      with automated pipelines, migrating on-premise bottlenecks to scalable cloud infrastructure,
+      and building the platforms and tooling that let product teams ship without asking for
+      permission. Whether it's untangling a decade of infrastructure debt or standing up a
+      greenfield platform from scratch, I get the foundations right so teams can move fast
+      sustainably.
+    </p>
     <div class="r-actions">
       <a href="/Cole_Eckelberry_Senior_DevOps_Platform_Engineer.pdf" download class="btn-download">
         <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
@@ -254,8 +262,102 @@
         </div>
         <p class="entry-body">
           Administered Commvault backups for over 1,400 clients, managing a total data size of 5.5
-          petabytes. Managed NetApp storage infrastructure and supported cloud adoption initiatives
-          across the institute.
+          petabytes. Managed NetApp storage arrays — capacity adjustments, new shares, and regular
+          maintenance — and supported cloud adoption initiatives across the institute.
+        </p>
+        <ul class="entry-achievements">
+          <li>
+            Developed automated backup monitoring scripts to streamline identification of potential
+            failures and ensure timely data protection
+          </li>
+          <li>
+            Assisted in scaling storage solutions to accommodate growing research data, ensuring
+            high availability
+          </li>
+          <li>
+            Commvault backup administration for 1,400 clients including VMs, NAS, and physical
+            clients with a total data size of 5.5 PB
+          </li>
+        </ul>
+        <p class="entry-tools">
+          <span class="tools-label">Toolset:</span>
+          NetApp, VMware, AWS, Commvault, Bash, Puppet, ServiceNow, Linux, HPC
+        </p>
+      </div>
+
+      <div class="entry">
+        <div class="entry-head">
+          <div>
+            <h2 class="entry-role">Sr. Systems Administrator</h2>
+            <p class="entry-org">General Electric · Cincinnati</p>
+          </div>
+          <time class="entry-date">Jun 2012 — Jun 2014</time>
+        </div>
+        <p class="entry-body">
+          Oversaw an extensive environment of over 9,200 servers and more than 7 petabytes of data.
+          Responsible for daily operational backup status reports to executive-level management,
+          ensuring the protection of one of the world's largest data storage environments.
+        </p>
+        <ul class="entry-achievements">
+          <li>
+            Monitored and managed environments with a combined monthly volume exceeding 7 PB and
+            9,200 servers
+          </li>
+          <li>
+            Ran daily operations backup call reporting environment status to GE executive management
+          </li>
+          <li>
+            Worked on a team of 26 engineers to protect one of the largest data storage environments
+            in the world
+          </li>
+          <li>
+            Helped migrate over 600 servers from Hamilton, Ohio to the Cincinnati datacenter in
+            under 3 months
+          </li>
+        </ul>
+        <p class="entry-tools">
+          <span class="tools-label">Toolset:</span>
+          NetBackup, Avamar (EMC), VMware, Nagios, ServiceNow, Linux/Unix, Bash
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <div class="r-divider" aria-hidden="true"></div>
+
+  <!-- ── Education ── -->
+  <section class="r-section">
+    <p class="eyebrow section-label">education</p>
+
+    <div class="timeline">
+      <div class="entry">
+        <div class="entry-head">
+          <div>
+            <h2 class="entry-role">B.S. Information Technology</h2>
+            <p class="entry-org">Western Governors University</p>
+          </div>
+          <time class="entry-date">May 2014 — May 2019</time>
+        </div>
+        <ul class="entry-achievements">
+          <li>Cloud technologies · Network and Security</li>
+          <li>Oracle SQL &amp; MySQL Database Administration</li>
+          <li>Data Science, Python programming, Java programming</li>
+          <li>Project Management, Encryption policies, PII</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <div class="entry-head">
+          <div>
+            <h2 class="entry-role">Full-Stack Web Development</h2>
+            <p class="entry-org">Springboard</p>
+          </div>
+          <time class="entry-date">Jun 2019 — Sept 2020</time>
+        </div>
+        <p class="entry-body">
+          700 hours of hands-on course material with 1:1 industry expert mentor oversight and
+          completion of 4 in-depth portfolio projects. Front-end, back-end, databases, and data
+          structures &amp; algorithms.
         </p>
       </div>
     </div>
@@ -331,6 +433,14 @@
 
   .sep {
     color: var(--text-muted);
+  }
+
+  .r-pitch {
+    font-size: var(--type-body);
+    line-height: 1.75;
+    color: var(--text-secondary);
+    margin: 0;
+    max-width: 640px;
   }
 
   .r-actions {
