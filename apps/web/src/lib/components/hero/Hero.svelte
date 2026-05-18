@@ -35,8 +35,13 @@
     </p>
 
     <p class="bio">
-      Ten years building cloud platforms — Python, JavaScript, TypeScript, plus the operations
-      stack. Four side projects below, all open source, all live.
+      Building the platforms and foundations that let engineering teams move fast and scale with
+      confidence — that's the through-line across 14 years working with companies on GCP, AWS,
+      Azure, and on-prem/hybrid systems. I've guided organizations through full cloud
+      transformations, modernized legacy infrastructure, containerized monolithic stacks, and built
+      the CI/CD pipelines that eliminate manual bottlenecks. I'm drawn to the hard problems: the
+      migrations that seem impossible, the systems that have never been touched, and the
+      architectures that need to be reinvented to support the next order of magnitude.
     </p>
 
     <div class="ctas">
