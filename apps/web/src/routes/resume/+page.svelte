@@ -32,7 +32,11 @@
       that need to be reinvented to support the next order of magnitude.
     </p>
     <div class="r-actions">
-      <a href="/Cole_Eckelberry_Senior_DevOps_Platform_Engineer.pdf" download class="btn-download">
+      <a
+        href="/Cole_Eckelberry_Senior_DevOps_Platform_Engineer.pdf"
+        download="cole_eckelberry.pdf"
+        class="btn-download"
+      >
         <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
           <path
             d="M7 1v8M4 6l3 3 3-3M2 11h10"

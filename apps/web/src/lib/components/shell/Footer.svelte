@@ -11,14 +11,14 @@
     { label: 'linkedin', href: 'https://www.linkedin.com/in/cole-eckelberry/' }
   ];
 
-  type ContactLink = { label: string; href: string; download?: true };
+  type ContactLink = { label: string; href: string; download?: string };
   const contactLinks: ContactLink[] = [
     { label: 'say hi →', href: '/#contact' },
     { label: 'résumé', href: '/resume' },
     {
       label: 'cv.pdf',
       href: '/Cole_Eckelberry_Senior_DevOps_Platform_Engineer.pdf',
-      download: true
+      download: 'cole_eckelberry.pdf'
     },
     { label: 'book a call', href: 'https://cal.com/coleeckelberry' }
   ];
