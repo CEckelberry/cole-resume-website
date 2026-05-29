@@ -31,36 +31,36 @@
   </g>
 
   <!-- Eyebrow -->
-  <text x="80" y="220"
+  <text x="80" y="185"
     font-family="JetBrains Mono, ui-monospace, monospace"
-    font-size="22" font-weight="500"
+    font-size="20" font-weight="500"
     letter-spacing="6"
     fill="rgba(255,255,255,0.62)">PORTFOLIO · 2026</text>
 
-  <!-- Name (gradient on Eckelberry) -->
-  <text x="80" y="360"
+  <!-- Name — two lines, no pixel-math overlap risk -->
+  <text x="80" y="330"
     font-family="Inter, system-ui, sans-serif"
-    font-size="116" font-weight="500"
+    font-size="108" font-weight="500"
     letter-spacing="-3"
     fill="#ffffff">Cole</text>
 
-  <text x="280" y="360"
+  <text x="80" y="448"
     font-family="Inter, system-ui, sans-serif"
-    font-size="116" font-weight="500"
+    font-size="108" font-weight="500"
     letter-spacing="-3"
     fill="url(#grad)">Eckelberry</text>
 
-  <!-- Tagline (italic serif) -->
-  <text x="80" y="440"
+  <!-- Tagline -->
+  <text x="80" y="510"
     font-family="Instrument Serif, Georgia, serif"
     font-style="italic"
-    font-size="42"
+    font-size="34"
     fill="rgba(255,255,255,0.78)">platform engineer · making weird things after 5pm.</text>
 
   <!-- URL micro-line -->
-  <text x="80" y="560"
+  <text x="80" y="578"
     font-family="JetBrains Mono, ui-monospace, monospace"
-    font-size="20"
+    font-size="18"
     letter-spacing="3"
     fill="rgba(255,255,255,0.45)">cole-eckelberry.com</text>
 
