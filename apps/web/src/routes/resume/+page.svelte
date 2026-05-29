@@ -164,6 +164,18 @@
             Contributed to ArgoCD-based GitOps workflows for deploying and managing GKE workloads,
             supporting continuous delivery pipelines across internal platform services
           </li>
+          <li>
+            Managed GCP service account lifecycle and secrets access patterns for GKE workloads,
+            integrating with Secret Manager to enforce secure credential delivery at runtime
+          </li>
+          <li>
+            Built AWS Lambda-backed internal tooling for automating security group auditing and IAM
+            policy validation, reducing manual review overhead for the security team
+          </li>
+          <li>
+            Used and contributed to in-house security group management applications, enabling teams
+            to self-serve IAM rule attachments while maintaining org-wide compliance policies
+          </li>
         </ul>
         <p class="entry-tools">
           <span class="tools-label">Toolset:</span>
@@ -181,20 +193,32 @@
           <time class="entry-date">May 2022 — Jan 2023</time>
         </div>
         <p class="entry-body">
-          Collaborated with data scientists worldwide to develop machine learning solutions within
-          Hex's hosted Jupyter Notebook environment. Provided feedback to engineering teams on
-          product performance, customer sentiment, and new feature ideas, while leveraging Python
-          and cloud technologies to create custom solutions for clients.
+          Acted as the technical bridge between Hex's engineering organization and its data-science
+          customer base, building custom cloud integrations and managing deployment infrastructure.
+          Drove internal automation initiatives and contributed to platform reliability by surfacing
+          production signals back to the engineering team.
         </p>
         <ul class="entry-achievements">
           <li>
-            Consistently worked with Python packages and data science models for customer machine
-            learning implementations
+            Built Python automation pipelines for customer ML workloads running on GCP and AWS,
+            reducing manual setup time and enabling repeatable deployment patterns
           </li>
           <li>
-            Helped create custom solutions for customers using Google Cloud and AWS integrations
+            Managed Kubernetes-based deployment environments and contributed to CircleCI CI/CD
+            pipeline improvements, tightening the feedback loop between code and production
           </li>
-          <li>Created architecture diagrams, demo projects, dbt models, and data visualizations</li>
+          <li>
+            Instrumented customer workloads with Datadog and Sentry, feeding observability signals
+            back to engineering to drive product reliability improvements
+          </li>
+          <li>
+            Authored Terraform-based infrastructure templates for recurring customer deployment
+            patterns on GCP and AWS, establishing reusable IaC standards
+          </li>
+          <li>
+            Created architecture diagrams, demo environments, dbt models, and data visualizations
+            to accelerate customer onboarding and pre-sales engineering
+          </li>
         </ul>
         <p class="entry-tools">
           <span class="tools-label">Toolset:</span>
@@ -211,12 +235,33 @@
           <time class="entry-date">May 2021 — May 2022</time>
         </div>
         <p class="entry-body">
-          Built serverless architectures and automated workflows for internal tools and projects.
-          Played a key role in implementing ETL processes using Python and Node.js across Google
-          Cloud. Developed API Gateway solutions with custom serverless architecture. Provided
-          technical documentation, training, and engineering services, collaborating with diverse
-          teams on data integration, platform migrations, and cloud architecture consulting.
+          Built and operated serverless platform infrastructure on GCP, automating workflows and
+          data pipelines for internal tools and client projects. Served as the cloud engineering
+          resource across multiple teams — designing architectures, leading platform migrations, and
+          standardizing deployment and data integration patterns.
         </p>
+        <ul class="entry-achievements">
+          <li>
+            Designed and implemented a serverless platform using Cloud Functions and Cloud Run,
+            replacing manual workflows with event-driven automation and reducing operational overhead
+          </li>
+          <li>
+            Built ETL pipelines in Python and Node.js across the GCP stack — Cloud Functions,
+            BigQuery, Fivetran — enabling scalable data movement and scheduled SQL transformations
+          </li>
+          <li>
+            Architected API Gateway solutions with custom serverless backends, establishing
+            reusable patterns adopted across multiple client project workstreams
+          </li>
+          <li>
+            Managed Kubernetes workloads on GCP and contributed Terraform IaC for cloud
+            infrastructure provisioning, bringing repeatability to previously manual deployments
+          </li>
+          <li>
+            Delivered platform migration and cloud architecture consulting across diverse teams,
+            including documentation, training, and hands-on engineering services
+          </li>
+        </ul>
         <p class="entry-tools">
           <span class="tools-label">Toolset:</span>
           GCP, Kubernetes, Cloud Functions, Cloud Run, GitHub, BigQuery, Terraform, Fivetran
@@ -245,6 +290,10 @@
           <li>
             Saved a customer over $6,000 a month in AWS S3 storage costs due to a backup
             misconfiguration discovery
+          </li>
+          <li>
+            Worked across Google Cloud, AWS, and Azure PaaS/IaaS for multiple customers, delivering
+            tailored infrastructure solutions across varied cloud environments
           </li>
         </ul>
         <p class="entry-tools">
