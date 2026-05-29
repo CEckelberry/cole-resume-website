@@ -642,14 +642,28 @@
     display: flex;
     flex-direction: column;
     gap: 6px;
-    padding-left: var(--space-4);
+    padding-left: 0;
     margin: 0;
+    list-style: none;
   }
 
   .entry-achievements li {
     font-size: var(--type-body);
     line-height: 1.7;
     color: var(--text-secondary);
+    display: grid;
+    grid-template-columns: 16px 1fr;
+    gap: 8px;
+    align-items: baseline;
+  }
+
+  .entry-achievements li::before {
+    content: '▸';
+    color: var(--accent-teal);
+    font-size: 0.65em;
+    line-height: 1.7;
+    position: relative;
+    top: -1px;
   }
 
   .entry-tools {
