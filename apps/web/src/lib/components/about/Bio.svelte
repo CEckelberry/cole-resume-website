@@ -22,10 +22,10 @@
     <strong>JavaScript / TypeScript</strong> alongside it, with <strong>React</strong> and
     <strong>Svelte</strong> in professional settings. The infrastructure stack I lean on is the
     boring-on-purpose one: <strong>Kubernetes</strong>, <strong>Terraform</strong>,
-    <strong>GCP</strong> and <strong>AWS</strong>, <strong>Postgres</strong>, <strong>Docker</strong>,
-    plus enough Bash since 2012 that I will fight you about <code>set -euo pipefail</code>. Recently
-    I've added <strong>Go</strong> (six months) and <strong>SvelteKit</strong> (two years) — this
-    site is what I made with them.
+    <strong>GCP</strong> and <strong>AWS</strong>, <strong>Postgres</strong>,
+    <strong>Docker</strong>, plus enough Bash since 2012 that I will fight you about
+    <code>set -euo pipefail</code>. Recently I've added <strong>Go</strong> (six months) and
+    <strong>SvelteKit</strong> (two years) — this site is what I made with them.
   </p>
 
   <p>

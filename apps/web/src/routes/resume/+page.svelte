@@ -216,8 +216,8 @@
             patterns on GCP and AWS, establishing reusable IaC standards
           </li>
           <li>
-            Created architecture diagrams, demo environments, dbt models, and data visualizations
-            to accelerate customer onboarding and pre-sales engineering
+            Created architecture diagrams, demo environments, dbt models, and data visualizations to
+            accelerate customer onboarding and pre-sales engineering
           </li>
         </ul>
         <p class="entry-tools">
@@ -243,15 +243,16 @@
         <ul class="entry-achievements">
           <li>
             Designed and implemented a serverless platform using Cloud Functions and Cloud Run,
-            replacing manual workflows with event-driven automation and reducing operational overhead
+            replacing manual workflows with event-driven automation and reducing operational
+            overhead
           </li>
           <li>
             Built ETL pipelines in Python and Node.js across the GCP stack — Cloud Functions,
             BigQuery, Fivetran — enabling scalable data movement and scheduled SQL transformations
           </li>
           <li>
-            Architected API Gateway solutions with custom serverless backends, establishing
-            reusable patterns adopted across multiple client project workstreams
+            Architected API Gateway solutions with custom serverless backends, establishing reusable
+            patterns adopted across multiple client project workstreams
           </li>
           <li>
             Managed Kubernetes workloads on GCP and contributed Terraform IaC for cloud
