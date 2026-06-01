@@ -24,8 +24,8 @@
       <a href="https://linkedin.com/in/cole-eckelberry" target="_blank" rel="noopener">LinkedIn</a>
     </div>
     <p class="r-pitch">
-      Cloud Architect and DevOps Technical Lead with 14 years of experience across GCP, AWS, Azure,
-      and on-prem/hybrid systems. I've guided organizations through full cloud transformations,
+      Senior DevOps / Platform Engineer with 14 years of experience across GCP, AWS, Azure, and
+      on-prem/hybrid systems. I've guided organizations through full cloud transformations,
       modernized legacy infrastructure, containerized monolithic stacks, and built the CI/CD
       pipelines that eliminate manual bottlenecks. I'm drawn to the hard problems — the migrations
       that seem impossible, the systems that haven't been touched in years, and the architectures
@@ -58,7 +58,7 @@
     <p class="eyebrow section-label">profile</p>
     <div class="r-prose">
       <p>
-        Cloud Architect and DevOps Technical Lead with a mission to help organizations thrive
+        Cloud Platform and DevOps Technical Lead with a mission to help organizations thrive
         through the power of technology. Expertise in designing scalable, efficient solutions and
         translating complex infrastructure challenges into clean, maintainable systems. Over 10
         years of experience across AWS, GCP, and Azure — leading large-scale cloud migrations,
@@ -119,6 +119,10 @@
             containerized applications, significantly reducing friction across the engineering org
           </li>
           <li>
+            Conducted training sessions with DevOps engineers and developers throughout the
+            organization, elevating cloud-native expertise across the team
+          </li>
+          <li>
             Established comprehensive GCP-native logging, monitoring, and alerting, replacing legacy
             Centreon infrastructure with real-time observability across all services
           </li>
@@ -147,9 +151,9 @@
         </p>
         <ul class="entry-achievements">
           <li>
-            Provided Cloud Architecture guidance on AWS IAM security stacks — role design, policy
-            scoping, and secure resource access patterns across a massive multi-account AWS
-            environment
+            Provided Cloud Architecture guidance on AWS IAM security stacks, advising internal
+            application teams on proper role design, policy scoping, and secure resource access
+            patterns across a massive multi-account AWS environment
           </li>
           <li>
             Authored and maintained Terraform modules for AWS IAM roles, subnets, security groups,
@@ -157,24 +161,31 @@
             infrastructure org
           </li>
           <li>
-            Managed GKE clusters: service account bindings, Workload Identity configurations, and
-            Kubernetes RBAC ensuring secure pod-level access to GCP secrets and downstream services
-          </li>
-          <li>
-            Contributed to ArgoCD-based GitOps workflows for deploying and managing GKE workloads,
-            supporting continuous delivery pipelines across internal platform services
+            Worked with GKE clusters to manage service account bindings, Workload Identity
+            configurations, and Kubernetes RBAC — ensuring secure pod-level access to GCP secrets
+            and downstream services
           </li>
           <li>
             Managed GCP service account lifecycle and secrets access patterns for GKE workloads,
             integrating with Secret Manager to enforce secure credential delivery at runtime
           </li>
           <li>
-            Built AWS Lambda-backed internal tooling for automating security group auditing and IAM
-            policy validation, reducing manual review overhead for the security team
+            Contributed to ArgoCD-based GitOps workflows for deploying and managing GKE workloads,
+            supporting continuous delivery pipelines across internal platform services
           </li>
           <li>
-            Used and contributed to in-house security group management applications, enabling teams
-            to self-serve IAM rule attachments while maintaining org-wide compliance policies
+            Worked with AWS Lambda-backed internal tooling for automating security group auditing
+            and IAM policy validation, reducing manual review overhead for the security team
+          </li>
+          <li>
+            Used and contributed to in-house security group management applications, helping teams
+            self-serve IAM rule attachments while maintaining compliance with org-wide security
+            policies
+          </li>
+          <li>
+            Collaborated with a large team of infrastructure engineers and architects to deliver
+            scalable, auditable security solutions across an environment serving hundreds of
+            thousands of concurrent users
           </li>
         </ul>
         <p class="entry-tools">
