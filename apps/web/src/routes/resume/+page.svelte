@@ -58,8 +58,8 @@
     <p class="eyebrow section-label">profile</p>
     <div class="r-prose">
       <p>
-        Cloud Platform and DevOps Technical Lead with a mission to help organizations thrive
-        through the power of technology. Expertise in designing scalable, efficient solutions and
+        Cloud Platform and DevOps Technical Lead with a mission to help organizations thrive through
+        the power of technology. Expertise in designing scalable, efficient solutions and
         translating complex infrastructure challenges into clean, maintainable systems. Over 10
         years of experience across AWS, GCP, and Azure — leading large-scale cloud migrations,
         modernizing legacy application stacks, and building the DevOps foundations that engineering
