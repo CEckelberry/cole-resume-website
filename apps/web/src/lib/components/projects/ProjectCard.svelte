@@ -27,14 +27,12 @@
   };
 </script>
 
-<a
+<div
   class="card"
-  href={project.caseStudyHref}
   style:--card-accent={ACCENT_COLOR[project.accent]}
   style:--card-accent-soft={ACCENT_SOFT[project.accent]}
   style:--card-accent-emphasis={ACCENT_EMPHASIS[project.accent]}
   data-accent={project.accent}
-  aria-label="case study: {project.title} {project.italicWord ?? ''} — {project.description}"
 >
   <div class="preview">
     {@render preview()}
@@ -66,12 +64,29 @@
         <span class="status-dot" aria-hidden="true"></span>
         {statusLabel[project.status]}
       </span>
-      <span class="cta">
-        case study <span aria-hidden="true">→</span>
-      </span>
+      <div class="cta-group">
+        {#if project.status === 'live'}
+          <a
+            class="live-link"
+            href={project.liveDemoUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="open {project.title} live site"
+          >
+            live site <span aria-hidden="true">↗</span>
+          </a>
+        {/if}
+        <a
+          class="cta stretched-link"
+          href={project.caseStudyHref}
+          aria-label="case study: {project.title} {project.italicWord ?? ''} — {project.description}"
+        >
+          case study <span aria-hidden="true">→</span>
+        </a>
+      </div>
     </footer>
   </div>
-</a>
+</div>
 
 <style>
   .card {
@@ -83,10 +98,10 @@
     backdrop-filter: blur(14px) saturate(140%);
     -webkit-backdrop-filter: blur(14px) saturate(140%);
     overflow: hidden;
-    text-decoration: none;
     color: var(--text-primary);
     min-height: 380px;
     height: 100%;
+    position: relative;
     transition:
       transform var(--dur-default) var(--ease-out),
       border-color var(--dur-default) var(--ease-out),
@@ -190,6 +205,12 @@
     text-transform: lowercase;
   }
 
+  .cta-group {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+  }
+
   .status {
     display: inline-flex;
     align-items: center;
@@ -219,12 +240,32 @@
     }
   }
 
-  .cta {
+  /* Stretched link covers the whole card for case study navigation */
+  .stretched-link {
+    text-decoration: none;
     color: var(--text-secondary);
     transition: color var(--dur-fast) var(--ease-out);
   }
-  .card:hover .cta {
+  .stretched-link::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+  }
+  .card:hover .stretched-link {
     color: var(--card-accent-soft);
+  }
+
+  /* Live link sits above the stretched link overlay */
+  .live-link {
+    position: relative;
+    z-index: 2;
+    text-decoration: none;
+    color: var(--card-accent);
+    transition: color var(--dur-fast) var(--ease-out);
+  }
+  .live-link:hover {
+    color: var(--card-accent-emphasis);
   }
 
   @media (prefers-reduced-motion: reduce) {
