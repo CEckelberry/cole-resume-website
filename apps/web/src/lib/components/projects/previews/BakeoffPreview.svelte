@@ -24,5 +24,7 @@
     object-fit: cover;
     object-position: center 55%;
     display: block;
+    transform: scale(0.8);
+    transform-origin: center 55%;
   }
 </style>
