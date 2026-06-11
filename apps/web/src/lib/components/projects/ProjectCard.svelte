@@ -79,7 +79,8 @@
         <a
           class="cta stretched-link"
           href={project.caseStudyHref}
-          aria-label="case study: {project.title} {project.italicWord ?? ''} — {project.description}"
+          aria-label="case study: {project.title} {project.italicWord ??
+            ''} — {project.description}"
         >
           case study <span aria-hidden="true">→</span>
         </a>
