@@ -22,7 +22,7 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: top center;
+    object-position: center 28%;
     display: block;
   }
 </style>
