@@ -11,9 +11,9 @@ stack:
   - Node.js
   - Python
   - PHP
-shipped: in progress
-status: planned
-liveDemoUrl: https://bakeoff.cole-eckelberry.com
+shipped: 2026
+status: live
+liveDemoUrl: https://backend-bakeoff.com
 ---
 
 <script>
